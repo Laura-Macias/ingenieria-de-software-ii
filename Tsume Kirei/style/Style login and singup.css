@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 10px;
+    background-color: #fffaf0; /* Fondo principal blanco crema */
+    font-family: Arial, sans-serif; /* Fuente general */
+}
+
+section {
+    background-color: #f7e8e0; /* Fondo alterno beige claro */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 25px 30px;
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Ancho máximo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+h2 {
+    color: #333333; /* Texto principal gris oscuro */
+    text-align: center; /* Centrar el título */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Apilar los elementos verticalmente */
+}
+
+label {
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el input */
+    color: #333333; /* Texto principal gris oscuro */
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 15px; /* Espacio entre los inputs */
+    padding: 0 10px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde gris claro */
+    transition: border-color 0.3s ease; /* Transición suave para el borde */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+    border-color: #f09c99; /* Borde rosa suave al hacer foco */
+}
+
+input[type="submit"] {
+    background-color: #333333; /* Botón oscuro gris oscuro */
+    color: #fffaf0; /* Texto en blanco crema */
+    border: none;
+    border-radius: 10px; /* Bordes redondeados */
+    height: 40px; /* Altura del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: 500; /* Peso de la fuente */
+    transition: background-color 0.3s ease; /* Transición suave para el fondo */
+}
+
+input[type="submit"]:hover {
+    background-color: #555555; /* Hover del botón gris más claro */
+}
+
+p {
+    text-align: center; /* Centrar el texto */
+    margin-top: 15px; /* Espacio arriba */
+}
+
+p a {
+    color: #f09c99; /* Enlace rosa suave */
+    text-decoration: none; /* Sin subrayado */
+}
+
+p a:hover {
+    text-decoration: underline; /* Subrayar al pasar el cursor */
+}
