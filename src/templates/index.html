@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsume Kirei</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                <li><a href="#Ubicacion">Ubicacion</a></li>
+                <li><a href="#precios">Precios</a></li>
+                <li><a href="{{ url_for('login') }}" class="btn-agenda">Agenda tu Cita</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Secciones -->
+    <section id="home" class="section">
+        <div class="overlay-box">
+            <h1>Bienvenidos a Tsume Kirei</h1>
+            <p>La mejor experiencia para embellecer tus uñas</p>
+            <a href="#" class="btn">Nosotros</a>
+            <a href="#" class="btn-primary">Precios</a>
+        </div>  
+    </section>
+
+    <section id="quienes-somos" class="section-container">
+        <div class="image-container">
+            <img src="../static/img/manicurista.jpg" alt="Contacto image">
+            <div class="image-overlay">
+                <h2>Contacta con nosotros.<br>Encuentra el mejor servicio para Ti.</h2>
+            </div>
+        </div>
+        <div class="text-container">
+            <small>Contacto</small>
+            <h1>Tsume Kirei</h1>
+            <p>En Tsume Kirei, siempre estamos aquí para ayudarte. Si tienes preguntas o deseas más información sobre nuestros servicios de manicura y pedicura, no dudes en ponerte en contacto con nosotros. Nuestro equipo de profesionales estará encantado de atenderte.</p>
+            <a href="#" class="btn-outline">Contáctanos</a>
+        </div>
+    </section>
+
+    <section id="Ubicacion" class="section">
+        <h2>Nuestros locales</h2>
+        <p>Encuentra nuestra ubicación aquí.</p>
+        <div id="mapa_loc">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d60053.72543727414!2d-74.12875136277347!3d4.675041086029079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sco!4v1727024313815!5m2!1ses-419!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <div id="precios">
+        <h2>Precios y Combos</h2>
+        <p>Elige entre nuestros exclusivos combos para disfrutar de nuestros servicios.</p>
+        <div class="precios-grid">
+            <div class="precios-item">
+                <h3>Combo Básico</h3>
+                <p>Incluye:</p>
+                <ul>
+                    <li>1 sesión de consulta</li>
+                    <li>1 tratamiento básico</li>
+                    <li>1 producto de cuidado personal</li>
+                </ul>
+                <p class="price">$120,000 COP</p>
+                <button class="btn-agenda">Agendar</button>
+            </div>
+            <div class="precios-item">
+                <h3>Combo Premium</h3>
+                <p>Incluye:</p>
+                <ul>
+                    <li>2 sesiones de consulta</li>
+                    <li>1 tratamiento avanzado</li>
+                    <li>2 productos de cuidado personal</li>
+                    <li>1 sesión de seguimiento</li>
+                </ul>
+                <p class="price">$220,000 COP</p>
+                <button class="btn-agenda">Agendar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="../js/mapa.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Style login and singup.css') }}">
+
+    <title>Registro</title>
+</head>
+<body>
+    <section>
+        <h2>Registro</h2>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+        <form id="signupForm" method="POST" action="/signup">  <!-- Asegúrate de que la acción esté bien definida -->
+            <label>Nombre</label>
+            <input type="text" placeholder="Ingrese su nombre" name="name" required autofocus>
+            <label>Número celular</label>
+            <input type="text" placeholder="Ingrese su número celular" name="phone" required pattern="\d{10}" title="Ingrese un número celular válido de 10 dígitos">
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="Ingrese su correo electrónico" name="email" required>
+            <label>Contraseña</label>
+            <input type="password" placeholder="Ingrese su contraseña" name="password" required>
+            <label>Confirmar Contraseña</label>
+            <input type="password" placeholder="Confirme su contraseña" name="confirm-password" required>
+            <input type="submit" value="Registrar">
+        </form>
+        <p>Ya tienes una cuenta? <a href="{{ url_for('login') }}">Ingresar</a></p>
+    </section>
+    <script src="js/singup.js"></script>
+</body>
+</html>
+  
