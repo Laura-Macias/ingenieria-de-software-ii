@@ -38,6 +38,10 @@ def load_user(user_id):
 def home():
     return render_template('index.html')
 
+@app.route('/reservation')
+def reservation():
+    return render_template('reservation.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -66,8 +70,6 @@ def login():
             flash('Usuario no encontrado.', 'error')
             return redirect(url_for('login'))
         
-        
-    
     return render_template('login.html')
 
 # Ya podemos usar la informacion del cliente logueado en la logica
@@ -88,7 +90,6 @@ def dashboard():
 @app.route('/recover_password', methods=['GET', 'POST'])
 def recover_password():
     if request.method == 'POST':
-        
         email = request.form['email']
 
         # Consulta a Supabase para verificar el usuario
@@ -124,7 +125,7 @@ def signup():
         # Inserta los datos en la base de datos
         response = supabase.table('cliente').insert({
             'name': name.upper(),
-            'last_name' : last_name.upper(),
+            'last_name': last_name.upper(),
             'phone': phone,
             'email': email,
             'date': date.today().isoformat(),
