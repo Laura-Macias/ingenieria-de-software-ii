@@ -5,6 +5,8 @@ from supabase import create_client
 from datetime import date
 from application.sendEmail import send_email_signup, send_recover_password
 
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadTimeSignature
+
 # Configurar Supabase
 url = "https://usgedyofxwmrdrwjkwhq.supabase.co"
 key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzZ2VkeW9meHdtcmRyd2prd2hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcwNjE4NzcsImV4cCI6MjA0MjYzNzg3N30.EA8Y-9VFPqCGAobgfE4Iu2NsNVv9OlR1OiQcGMZMyVI"
@@ -17,6 +19,7 @@ app.secret_key = '123456'
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'  # Redirecciona a la vista de login si no está autenticado
+
 
 # Modelo de usuario para Flask-Login
 class User(UserMixin):
@@ -103,6 +106,36 @@ def recover_password():
         # Lógica para enviar el correo electrónico de recuperación
         return redirect(url_for('login'))  # Redirige de nuevo al login después de enviar el correo
     return render_template('recover_password.html')  # Crea una plantilla para esto
+
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    serializer = URLSafeTimedSerializer('SECRET_KEY')
+    
+    try:
+        email = serializer.loads(token, salt='password-reset-salt', max_age=1800)  # 30 minutos de validez
+    except (SignatureExpired, BadTimeSignature):
+        return "El token ha expirado o es inválido", 400
+
+    if request.method == 'POST':
+        new_password = request.form['new_password']
+        confirm_password = request.form['confirm_password']
+
+        if new_password == confirm_password:
+            hashed_password = generate_password_hash(new_password)
+            response = supabase.table('cliente').update({"password": hashed_password}).eq("email", email).execute()
+
+            # Verifica si la actualización fue exitosa
+            if response.data:  # Si hay datos, significa que la actualización fue exitosa
+    
+                return redirect(url_for('login'))
+            else:
+             
+                return redirect(url_for('reset_password', token=token))
+        else:
+     
+            return redirect(url_for('reset_password', token=token))
+
+    return render_template('reset_password.html', token=token)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
