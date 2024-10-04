@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from supabase import create_client
+from datetime import date
+from application.sendEmail import send_email_signup, send_recover_password
 
 # Configurar Supabase
 url = "https://usgedyofxwmrdrwjkwhq.supabase.co"
@@ -55,6 +57,7 @@ def login():
                 user = User(user_data['id_cliente'], user_data['name'], user_data['email'])
                 login_user(user)
                 flash("Inicio de sesión exitoso.")
+                
                 return redirect(url_for('home'))
             else:
                 flash('Contraseña incorrecta.', 'error')
@@ -62,8 +65,13 @@ def login():
         else:
             flash('Usuario no encontrado.', 'error')
             return redirect(url_for('login'))
-
+        
+        
+    
     return render_template('login.html')
+
+# Ya podemos usar la informacion del cliente logueado en la logica
+print(login_user)
 
 @app.route('/logout')
 @login_required
@@ -77,10 +85,29 @@ def logout():
 def dashboard():
     return render_template('dashboard.html', name=current_user.name)
 
+@app.route('/recover_password', methods=['GET', 'POST'])
+def recover_password():
+    if request.method == 'POST':
+        
+        email = request.form['email']
+
+        # Consulta a Supabase para verificar el usuario
+        response = supabase.table('cliente').select("*").eq('email', email).execute()
+ 
+        if response.data:  # Si la respuesta tiene datos
+            user_data = response.data[0]  # Obtenemos el primer usuario devuelto
+            print(user_data['name'])
+            send_recover_password(user_data['name'], user_data['email'])
+
+        # Lógica para enviar el correo electrónico de recuperación
+        return redirect(url_for('login'))  # Redirige de nuevo al login después de enviar el correo
+    return render_template('recover_password.html')  # Crea una plantilla para esto
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         name = request.form['name']
+        last_name = request.form['last_name']
         phone = request.form['phone']
         email = request.form['email']
         password = request.form['password']
@@ -96,19 +123,20 @@ def signup():
 
         # Inserta los datos en la base de datos
         response = supabase.table('cliente').insert({
-            'name': name,
+            'name': name.upper(),
+            'last_name' : last_name.upper(),
             'phone': phone,
             'email': email,
+            'date': date.today().isoformat(),
             'password': hashed_password
         }).execute()
 
         if response.data:
-            flash("Registro exitoso. Por favor, inicie sesión.")
-            return redirect(url_for('login'))
+            send_email_signup(name, email)         
         else:
             flash("Error al registrar: " + str(response.error))
 
     return render_template('signup.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False, host='0.0.0.0', port=5000)

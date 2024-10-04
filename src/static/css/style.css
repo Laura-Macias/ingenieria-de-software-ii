@@ -24,9 +24,9 @@ nav {
     justify-content: space-between; /* Cambiado a space-between para espacio entre elementos */
     align-items: center;
     width: 100%; /* Cambiado a 100% para ocupar todo el ancho */
-    max-width: 1000px;
-    margin: 10px auto 10px; /* Centra el nav en el contenedor */
-    background-color: rgba(239, 233, 206, 0.50);
+    max-width: 1100px;
+    margin: 0px auto 10PX; /* Centra el nav en el contenedor */
+    background-color: rgba(239, 233, 206, 1);
     border-radius: 25px;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.50);
@@ -39,9 +39,9 @@ nav {
 }
 
 nav ul {
-    list-style: none;
     display: flex;
     gap: 20px;
+    list-style: none;  /* Elimina las viñetas del menú */
 }
 
 nav ul li {
@@ -78,8 +78,8 @@ nav ul li a {
 .bar {
     height: 3px;
     width: 25px;
-    background-color: white;
-    margin: 3px 0;
+    background-color: #333;
+    margin: 4px 0;
 }
 
 .overlay-menu {
@@ -118,22 +118,30 @@ nav ul {
 
 @media (max-width: 768px) {
     nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    transition: max-height 0.3s ease; /* Transición suave */
-    overflow: hidden; /* Oculta el contenido que no cabe */
-    max-height: 0; /* Oculta el menú por defecto */
-}
+        flex-direction: column; /* Menú en columna */
+        position: absolute;
+        top: 100px; /* Justo debajo de la barra de navegación */
+        right: 0;
+        width: 100%;
+        background-color: rgba(239, 233, 206, 1);
+        max-height: 0; /* Oculta el menú por defecto */
+        overflow: hidden; /* Oculta el contenido extra */
+        transition: max-height 0.5s ease-in-out; /* Transición suave */
+    }
+    nav ul li {
+        text-align: center; /* Centra los elementos del menú */
+        padding: 10px 0;
+    }
 
-nav.active ul {
-    max-height: 300px; /* Ajusta según el tamaño que necesites para el menú expandido */
-}
+    nav ul.active {
+        max-height: 300px; /* Ajusta según el tamaño que necesites */
+    }
 
-.menu-toggle {
-    display: flex; /* Muestra el ícono de menú en móviles */
-    cursor: pointer;
-}
+    .menu-toggle {
+        display: flex; /* Muestra el ícono de menú en pantallas pequeñas */
+        cursor: pointer;
+    }
+
 }
 
 
@@ -378,3 +386,11 @@ p {
     margin-top: 10px;
 }
 
+.precios-item ul {
+    list-style: none;  /* Elimina las viñetas de la lista en la sección de precios */
+    padding: 0;        /* Elimina el padding extra si lo hay */
+}
+
+.precios-item ul li {
+    margin-bottom: 10px;  /* Añade un pequeño margen entre los elementos de la lista si lo deseas */
+}

@@ -22,7 +22,9 @@
         {% endwith %}
         <form id="signupForm" method="POST" action="/signup">  <!-- Asegúrate de que la acción esté bien definida -->
             <label>Nombre</label>
-            <input type="text" placeholder="Ingrese su nombre" name="name" required autofocus>
+            <input type="text" placeholder="Ingrese su nombre" name="name" pattern="[A-Za-z]+" title="Ingrese solo el nombre" required autofocus>
+            <label>Apellido</label>
+            <input type="text" placeholder="Ingrese su apellido" name="last_name" pattern="[A-Za-z]+" title="Ingrese solo el apellido" required autofocus>
             <label>Número celular</label>
             <input type="text" placeholder="Ingrese su número celular" name="phone" required pattern="\d{10}" title="Ingrese un número celular válido de 10 dígitos">
             <label>Correo electrónico</label>
