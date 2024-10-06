@@ -2,7 +2,7 @@
 En este archivo se encuentra la documentacion con respecto a la primera implementacion del Front end; Dentro de esta implementacion se encuentra lo siguiente
 ## Lista de Ítems
 
-1. [Template de inspiracion](Template-de-inspiracion)
+1. [Template de inspiracion](##Template-de-inspiracion)
 2. [Estructura HTML](Estructura-HTML)
 3. [Implementacion visual con CSS](Implementacion-visual-con-CSS)
 
