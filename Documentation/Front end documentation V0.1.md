@@ -10,7 +10,6 @@ En este archivo se encuentra la documentacion con respecto a la primera implemen
 ## **Template de inspiracion**
 En esta fase inicial del proyecto, por la parte del front end, nos dedicamos a buscar inspiracion en diferentes templats de varios negocios; pero no nos convencio ninguno asi que decidimos crear un templeat desde cero usando detalles que encontramos en similar en los demas templeats.
 
-![Texto alternativo](https://cdn.dribbble.com/users/359023/screenshots/3142624/57574_drib.png?resize=400x0)
 <img src="https://cdn.dribbble.com/users/359023/screenshots/3142624/57574_drib.png?resize=400x0" alt="Templeat" width="300">
 ## **Estructura HTML**
 En esta siguiente fase se creo ya una estructura HTML, en esta estructura esta toda la pagina principal con diferentes secciones como la de menu, inicio, mapa, informacion y precios.
