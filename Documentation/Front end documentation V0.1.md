@@ -2,7 +2,7 @@
 En este archivo se encuentra la documentacion con respecto a la primera implementacion del Front end; Dentro de esta implementacion se encuentra lo siguiente
 ## Lista de Ítems
 
-1. [Template de inspiracion](#item-1)
+1. [Template de inspiracion](#Template-de-inspiracion)
 2. [Item 2](#item-2)
 3. [Item 3](#item-3)
 
