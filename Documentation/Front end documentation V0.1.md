@@ -8,6 +8,8 @@ En este archivo se encuentra la documentacion con respecto a la primera implemen
 4. [FUncionalidades JavaScrip](#Funcionalidades-JavaScrip)
 
 
+
+
 ## **Template de inspiracion**
 En esta fase inicial del proyecto, por la parte del front end, nos dedicamos a buscar inspiracion en diferentes templats de varios negocios; pero no nos convencio ninguno asi que decidimos crear un templeat desde cero usando detalles que encontramos en similar en los demas templeats.
 
