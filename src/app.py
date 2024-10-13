@@ -28,7 +28,7 @@ class User(UserMixin):
         self.name = name
         self.email = email
 
-# Carga el usuario para Flask-Login
+# Carga el usuario para Flask-Login y guarda los datos en la clase User para su posterior uso
 @login_manager.user_loader
 def load_user(user_id):
     response = supabase.table('cliente').select('*').eq('id_cliente', user_id).execute()
@@ -37,10 +37,13 @@ def load_user(user_id):
         return User(user_data['id_cliente'], user_data['name'], user_data['email'])
     return None
 
+# Carga la ruta para la pagina principal
 @app.route('/')
 def home():
     return render_template('index.html')
 
+
+# La funcion que se encarga de autenticar al usuario
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -58,6 +61,7 @@ def login():
             if check_password_hash(user_data['password'], password):
                 # Autenticar el usuario
                 user = User(user_data['id_cliente'], user_data['name'], user_data['email'])
+                # se guarda la informacion del usuario en login_user para que se pueda usar en otros procesos
                 login_user(user)
                 flash("Inicio de sesión exitoso.")
                 
@@ -76,6 +80,8 @@ def login():
 # Ya podemos usar la informacion del cliente logueado en la logica
 print(login_user)
 
+
+# Funcion que permite cerrar cesion
 @app.route('/logout')
 @login_required
 def logout():
@@ -83,9 +89,23 @@ def logout():
     flash("Sesión cerrada correctamente.")
     return redirect(url_for('login'))
 
+
+'''
+Define una ruta para la URL '/dashboard'. Cuando un usuario acceda a esta URL, 
+se ejecutará la función 'dashboard()'.
+'''
 @app.route('/dashboard')
+
+# Solo los usuarios que han iniciado sesión pueden acceder al dashboard.
+# Si el usuario no está autenticado, será redirigido a la página de login.
+
 @login_required
 def dashboard():
+    '''
+     Renderiza (muestra) la plantilla HTML 'dashboard.html'.
+    También pasa el nombre del usuario autenticado (current_user.name)
+    '''
+
     return render_template('dashboard.html', name=current_user.name)
 
 @app.route('/recover_password', methods=['GET', 'POST'])
@@ -100,45 +120,65 @@ def recover_password():
         if response.data:  # Si la respuesta tiene datos
             user_data = response.data[0]  # Obtenemos el primer usuario devuelto
             print(user_data['name'])
+            # Enviamos un correo con los pasos para la recuperacion de la contarseña
             send_recover_password(user_data['name'], user_data['email'])
 
-        # Lógica para enviar el correo electrónico de recuperación
         return redirect(url_for('login'))  # Redirige de nuevo al login después de enviar el correo
-    return render_template('recover_password.html')  # Crea una plantilla para esto
+    return render_template('recover_password.html')
 
+# Define una ruta para la URL '/reset_password/<token>'
+# La variable <token> en la URL será pasada a la función 'reset_password'.
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
+    
+    # Crea un serializador que permite generar y validar tokens usando una clave secreta.
     serializer = URLSafeTimedSerializer('SECRET_KEY')
     
     try:
-        email = serializer.loads(token, salt='password-reset-salt', max_age=1800)  # 30 minutos de validez
+        # Intenta decodificar el token recibido en la URL y obtener el email asociado.
+        # El token se valida con una sal específica ('password-reset-salt') y expira después de 30 minutos (1800 segundos).
+        email = serializer.loads(token, salt='password-reset-salt', max_age=1800)
     except (SignatureExpired, BadTimeSignature):
+        # Si el token ha expirado o es inválido, se retorna un error.
         return "El token ha expirado o es inválido", 400
 
     if request.method == 'POST':
+        # Obtiene la nueva contraseña y su confirmación desde el formulario.
         new_password = request.form['new_password']
         confirm_password = request.form['confirm_password']
 
+        # Verifica que ambas contraseñas coincidan.
         if new_password == confirm_password:
+
+            # Si coinciden, genera el hash de la nueva contraseña.
             hashed_password = generate_password_hash(new_password)
+
+            # Actualiza la contraseña del usuario en la tabla 'cliente' de la base de datos Supabase, utilizando su email.
             response = supabase.table('cliente').update({"password": hashed_password}).eq("email", email).execute()
 
-            # Verifica si la actualización fue exitosa
-            if response.data:  # Si hay datos, significa que la actualización fue exitosa
-    
+            # Verifica si la actualización fue exitosa.
+            if response.data:  
+                # Si hay datos en la respuesta, significa que la actualización fue exitosa.
+                # Redirige al usuario a la página de login después de actualizar la contraseña.
                 return redirect(url_for('login'))
             else:
-             
+                # Si la actualización falla, redirige de nuevo a la página de restablecimiento de contraseña con el token.
                 return redirect(url_for('reset_password', token=token))
         else:
-     
+            # Si las contraseñas no coinciden, redirige de nuevo a la página de restablecimiento de contraseña.
             return redirect(url_for('reset_password', token=token))
 
     return render_template('reset_password.html', token=token)
 
+# Esta funcion captura los datos del ususario del formulario del signup desde el Front End
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    
     if request.method == 'POST':
+        '''
+        Si se envian los datos del usuarios se capturan con el objeto request importado de Flask
+        y se guardan cada uno en una varible
+        '''
         name = request.form['name']
         last_name = request.form['last_name']
         phone = request.form['phone']
@@ -148,10 +188,12 @@ def signup():
         # Verifica si el correo ya existe
         response = supabase.table('cliente').select('email').eq('email', email).execute()
 
+        # Si  el correo ya existe se envia una alerta al usuairo y se vuelve a cargar la vista del signup
         if response.data and len(response.data) > 0:
             flash("El correo electrónico ya está en uso. Por favor, ingrese otro.")
             return render_template('signup.html')
 
+        # Se cifra la contraseña para no guardarla en texto plano
         hashed_password = generate_password_hash(password)
 
         # Inserta los datos en la base de datos
@@ -164,6 +206,7 @@ def signup():
             'password': hashed_password
         }).execute()
 
+        # Si la variable tiene datos se confirma que se gaurdo en la base de datos y se envia un correo de confrimacion
         if response.data:
             send_email_signup(name, email)         
         else:
