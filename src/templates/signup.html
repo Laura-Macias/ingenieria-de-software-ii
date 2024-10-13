@@ -3,39 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <!-- Configuración para que la vista se adapte a diferentes dispositivos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <!-- Enlace a la hoja de estilos CSS, usando Flask para generar la URL -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Style login and singup.css') }}">
 
-    <title>Registro</title>
+    <title>Registro</title><!-- Título de la pagina -->
 </head>
 <body>
     <section>
-        <h2>Registro</h2>
+        <h2>Registro</h2><!-- Título del formulario de registro -->
+        <!-- Bloque para mostrar notificaciones -->
         {% with messages = get_flashed_messages(with_categories=True) %}
         {% if messages %}
             <ul>
                 {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
+                    <li class="{{ category }}">{{ message }}</li><!-- Muestra cada mensaje con su categoría -->
                 {% endfor %}
             </ul>
         {% endif %}
         {% endwith %}
-        <form id="signupForm" method="POST" action="/signup">  <!-- Asegúrate de que la acción esté bien definida -->
+        <form id="signupForm" method="POST" action="/signup"> 
             <label>Nombre</label>
+              <!-- Campo para ingresar el nombre, uso de atributo pattern para condicionar los datos que recibe el campo
+               uso de atributo required para que el campo se complete-->
             <input type="text" placeholder="Ingrese su nombre" name="name" pattern="[A-Za-z]+" title="Ingrese solo el nombre" required autofocus>
             <label>Apellido</label>
+               <!-- Campo para ingresar el apellido, uso de atributo pattern para condicionar los datos que recibe el campo
+               uso de atributo required para que el campo se complete-->
             <input type="text" placeholder="Ingrese su apellido" name="last_name" pattern="[A-Za-z]+" title="Ingrese solo el apellido" required autofocus>
             <label>Número celular</label>
+               <!-- Campo para ingresar el numero de celular, uso de atributo pattern para condicionar los datos que recibe el campo
+               uso de atributo required para que el campo se complete-->
             <input type="text" placeholder="Ingrese su número celular" name="phone" required pattern="\d{10}" title="Ingrese un número celular válido de 10 dígitos">
             <label>Correo electrónico</label>
+               <!-- Campo para ingresar el correo electronico, uso de atributo pattern para condicionar los datos que recibe el campo
+               uso de atributo required para que el campo se complete-->
             <input type="email" placeholder="Ingrese su correo electrónico" name="email" required>
             <label>Contraseña</label>
+               <!-- Campo para ingresar la contraseña, uso de atributo required para que el campo se complete-->
             <input type="password" placeholder="Ingrese su contraseña" name="password" required>
             <label>Confirmar Contraseña</label>
+               <!-- Campo para ingresar la contraseña nuevamente, uso de atributo required para que el campo se complete-->
             <input type="password" placeholder="Confirme su contraseña" name="confirm-password" required>
+             <!-- Botón para enviar el formulario -->
             <input type="submit" value="Registrar">
         </form>
-        <p>Ya tienes una cuenta? <a href="{{ url_for('login') }}">Ingresar</a></p>
+       <!-- Enlace para iniciar sesión si ya tiene una cuenta -->
+        <p>Ya tienes una cuenta? <a href="{{ url_for('auth.login') }}">Ingresar</a></p>
     </section>
     <script src="js/singup.js"></script>
 </body>

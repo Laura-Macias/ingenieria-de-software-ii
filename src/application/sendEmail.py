@@ -42,7 +42,7 @@ def send_recover_password(name, email_reciber):
     em = EmailMessage() # Inicializamos el objeto que nos permite usar las funciones de correo
     # Enviar correo con el link para restablecer la contraseña
     token = generar_token(email_reciber)
-    reset_url = url_for('reset_password', token=token, _external=True)  # Genera la URL del link
+    reset_url = url_for('recover_password.reset_password', token=token, _external=True)  # Genera la URL del link
     subject = 'Recover password'
     body = f'{name}, Para restablecer tu contraseña, haz clic en el siguiente enlace: {reset_url}'
     em["From"] = email_sender

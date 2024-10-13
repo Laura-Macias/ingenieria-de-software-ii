@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+     <!-- Configuración para que la vista se adapte a diferentes dispositivos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tsume Kirei</title>
     <link rel="stylesheet" href="../static/css/style.css">
@@ -18,8 +19,8 @@
                 <li><a href="#quienes-somos">Quiénes Somos</a></li>
                 <li><a href="#Ubicacion">Ubicacion</a></li>
                 <li><a href="#precios">Precios</a></li>
-                <li><a href="{{ url_for('signup') }}" class="btn-agenda">Agenda tu Cita</a></li>
-                <li><a href="{{ url_for('login') }}" class="btn">Iniciar Sesion</a></li>
+                <li><a href="{{ url_for('signup.signup') }}" class="btn-agenda">Agenda tu Cita</a></li>
+                <li><a href="{{ url_for('auth.login') }}" class="btn">Iniciar Sesion</a></li>
                 
             </ul>
             <div class="menu-toggle" id="menuToggle">
@@ -75,7 +76,7 @@
                     <li>1 producto de cuidado personal</li>
                 </ul>
                 <p class="price">$120,000 COP</p>
-                <button class="btn-agenda">Agendar</button>
+                <a href="{{ url_for('reservation.reservation') }}" class="btn-agenda">Agendar</a> <!-- Enlace a la página de reserva -->
             </div>
             <div class="precios-item">
                 <h3>Combo Premium</h3>
@@ -87,7 +88,7 @@
                     <li>1 sesión de seguimiento</li>
                 </ul>
                 <p class="price">$220,000 COP</p>
-                <button class="btn-agenda">Agendar</button>
+                <a href="{{ url_for('reservation.reservation') }}" class="btn-agenda">Agendar</a> <!-- Enlace a la página de reserva -->
             </div>
         </div>
     </div>
