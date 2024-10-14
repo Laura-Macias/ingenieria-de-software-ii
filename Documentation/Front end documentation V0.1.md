@@ -16,9 +16,9 @@ En esta fase inicial del proyecto, por la parte del front end, nos dedicamos a b
 En esta siguiente fase se creo ya una estructura HTML, en esta estructura esta toda la pagina principal con diferentes secciones como la de menu, inicio, mapa, informacion y precios.
 Y los enlaces en la parte del head lo cual enlaza los archivos del CSS y en la parte del boddy los enlaces al JavaScrip
 
-## **Diseño CSS**
+## **Implementacion visual con CSS**
 En esta fase se creo el diseño de toda la estructura HTML, para el diseño se utilizo una paleta de colores pastel, combinadas con una paleta de colores oscuros para diferenciar los botones principales; a su vez se creo un diseño donde el fondo fuese una iamgen de un diseño de uñas hecho en el espa, en la parte de la ubicacion se agrego un mapa que se extrajo de la API de google maps, en la parte de los precios se decoro en dos listados con dos combos diferentes sobre dos BOXlas cuales tienen una animacion cuando se apunta el cursor en alguna de estas.
 
-## **Interaccion JavaScrip**
+## **Funcionalidades JavaScrip**
 En esta fase se implemento la interracion que tendra la pagina con el usuario, se agrego una interracion para que el mapa se pueda usar directamente desde la pagina sin tener que redirigir al usuario a google maps
 
