@@ -1,5 +1,6 @@
-# **Documentacion Front end**
-En este archivo se encuentra la documentacion con respecto a la implementacion del Front end; Dentro de esta implementacion se encuentra lo siguiente
+# **Documentacion Frontend**
+Este archivo contiene la documentación relacionada con la implementación del Frontend. En esta implementación se detalla lo siguiente:
+
 # **Documentacion Front end V 0.1**
 ## Lista de Ítems
 
@@ -9,20 +10,30 @@ En este archivo se encuentra la documentacion con respecto a la implementacion d
 4. [FUncionalidades JavaScrip](#Funcionalidades-JavaScrip)
 
 ## **Template de inspiracion**
-En esta fase inicial del proyecto, por la parte del front end, nos dedicamos a buscar inspiracion en diferentes templats de varios negocios; pero no nos convencio ninguno asi que decidimos crear un templeat desde cero usando detalles que encontramos en similar en los demas templeats.
+En esta fase inicial del proyecto, para la parte del frontend, nos dedicamos a buscar inspiración en diferentes templates de varios negocios; sin embargo, no nos convenció ninguno, así que decidimos crear un template desde cero, usando detalles similares que encontramos en otros templates.
 
-<img src="https://cdn.dribbble.com/users/359023/screenshots/3142624/57574_drib.png?resize=400x0" alt="Templeat" width="300">
+<img src="https://cdn.dribbble.com/users/359023/screenshots/3142624/57574_drib.png?resize=400x0" alt="Template" width="300">
 
 ## **Estructura HTML**
-En esta siguiente fase se creo ya una estructura HTML, en esta estructura esta toda la pagina principal con diferentes secciones como la de menu, inicio, mapa, informacion y precios.
-Y los enlaces en la parte del head lo cual enlaza los archivos del CSS y en la parte del boddy los enlaces al JavaScrip
+En esta fase se creó una estructura HTML que incluye toda la página principal, con diferentes secciones como menú, inicio, mapa, información y precios. Los enlaces al CSS se ubican en la parte del head, y los enlaces a los scripts de JavaScript están en el body.
 
 ## **Implementacion visual con CSS**
-En esta fase se creo el diseño de toda la estructura HTML, para el diseño se utilizo una paleta de colores pastel, combinadas con una paleta de colores oscuros para diferenciar los botones principales; a su vez se creo un diseño donde el fondo fuese una iamgen de un diseño de uñas hecho en el espa, en la parte de la ubicacion se agrego un mapa que se extrajo de la API de google maps, en la parte de los precios se decoro en dos listados con dos combos diferentes sobre dos BOXlas cuales tienen una animacion cuando se apunta el cursor en alguna de estas.
+En esta fase se diseñó toda la estructura HTML. Se utilizó una paleta de colores pastel combinada con colores oscuros para resaltar los botones principales. También se diseñó un fondo con una imagen de un diseño de uñas realizado en el spa. En la sección de "Ubicación" se añadió un mapa extraído de la API de Google Maps. En la sección de "Precios" se decoraron dos listados con diferentes combos, los cuales tienen una animación al apuntar el cursor sobre ellos.
 
 ## **Funcionalidades JavaScrip**
-En esta fase se implemento la interracion que tendra la pagina con el usuario, se agrego una interracion para que el mapa se pueda usar directamente desde la pagina sin tener que redirigir al usuario a google maps
-
+En esta fase se implementó la interacción que tendrá la página con el usuario. Se añadió una funcionalidad para que el mapa pueda usarse directamente desde la página, sin necesidad de redirigir al usuario a Google Maps.
 
 # ** Documentacion Front end V 0.2**
-¿
+Con la estructura, el diseño y las funcionalidades básicas ya implementadas, nos dedicamos a la implementación responsiva, corrección de errores, ajustes de diseño, e implementación de los formularios de registro (Sign Up) y acceso (Login).
+
+## **Implementacion responsive**
+Se añadió a la estructura y diseño CSS, en combinación con una función JavaScript, para que a cierta resolución de pantalla la página se adapte completamente. El menú se cambia por un menú desplegable activado mediante un ícono, que expande una barra mostrando el menú.
+
+## **Correcion de errores**
+Se corrigió un error que ocurría al aplicar el estilo responsive, el cual no se ajustaba a toda la pantalla. Para solucionarlo, se ajustó el ancho (width) de todas las secciones, permitiendo que se adapten automáticamente a la resolución cambiante.
+
+## **ajustes de diseño y funciones**
+Se ajustó el diseño CSS del menú, la sección del mapa y los precios. En el menú, se rediseñó para que permanezca fijo en la parte superior de la pantalla (top). En la sección de mapa, se reorganizó para que el mapa esté a la izquierda y se implementaron imágenes del local en la parte derecha. Al hacer clic en estas imágenes, el cliente es redirigido a la ubicación del local. En la sección de precios, se ajustaron los botones de agenda y se modificó el tamaño de las tarjetas donde se encuentran los dos combos.
+
+## **implementacion Sing up y Login**
+Se implementó una estructura de formulario tanto para el login como para el Sign Up. En ambos formularios, se utilizó un diseño simple y minimalista, que sigue la paleta de colores pastel combinados con colores oscuros.
