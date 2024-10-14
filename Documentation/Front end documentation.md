@@ -1,7 +1,7 @@
 # **Documentacion Frontend**
 Este archivo contiene la documentación relacionada con la implementación del Frontend. En esta implementación se detalla lo siguiente:
 
-# **Documentacion Front end V 0.1**
+# **Documentacion Frontend V 0.1**
 ## Lista de Ítems
 
 1. [Template de inspiracion](##Template-de-inspiracion)
@@ -23,7 +23,7 @@ En esta fase se diseñó toda la estructura HTML. Se utilizó una paleta de colo
 ## **Funcionalidades JavaScrip**
 En esta fase se implementó la interacción que tendrá la página con el usuario. Se añadió una funcionalidad para que el mapa pueda usarse directamente desde la página, sin necesidad de redirigir al usuario a Google Maps.
 
-# **Documentacion Front end V 0.2**
+# **Documentacion Frontend V 0.2**
 Con la estructura, el diseño y las funcionalidades básicas ya implementadas, nos dedicamos a la implementación responsiva, corrección de errores, ajustes de diseño, e implementación de los formularios de registro (Sign Up) y acceso (Login).
 
 ## **Implementacion responsive**
