@@ -1,16 +1,16 @@
 # **Documentacion Frontend**
 Este archivo contiene la documentación relacionada con la implementación del Frontend. En esta implementación se detalla lo siguiente:
 
-1.[Documentacion Frontend V 0.1](#Documentacion-Frontend-V-0.1)
-2.[Template de inspiracion](##Template-de-inspiracion)
-3.[Estructura HTML](#Estructura-HTML)
-4.[Implementacion visual con CSS](#Implementacion-visual-con-CSS)
-5.[Funcionalidades JavaScrip](#Funcionalidades-JavaScrip)
-6.[Documentacion Frontend V 0.2](#Documentacion-Frontend-V-0.2)
-7.[Implementacion responsive](#Implementacion-responsive)
-8.[Correcion de errores](#Correcion-de-errores)
-9.[ajustes de diseño y funciones](#ajustes-de-diseño-y-funciones)
-10.[implementacion Sing up y Login](#implementacion-Sing-up-y-Login)
+1. [Documentacion Frontend V 0.1](#Documentacion-Frontend-V-0.1)
+2. [Template de inspiracion](##Template-de-inspiracion)
+3. [Estructura HTML](#Estructura-HTML)
+4. [Implementacion visual con CSS](#Implementacion-visual-con-CSS)
+5. [Funcionalidades JavaScrip](#Funcionalidades-JavaScrip)
+6. [Documentacion Frontend V 0.2](#Documentacion-Frontend-V-0.2)
+7. [Implementacion responsive](#Implementacion-responsive)
+8. [Correcion de errores](#Correcion-de-errores)
+9. [ajustes de diseño y funciones](#ajustes-de-diseño-y-funciones)
+10. [implementacion Sing up y Login](#implementacion-Sing-up-y-Login)
 
 # **Documentacion Frontend V 0.1**
 ## Lista de Ítems
