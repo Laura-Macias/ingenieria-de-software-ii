@@ -1,5 +1,6 @@
+# **Documentacion Front end**
+En este archivo se encuentra la documentacion con respecto a la implementacion del Front end; Dentro de esta implementacion se encuentra lo siguiente
 # **Documentacion Front end V 0.1**
-En este archivo se encuentra la documentacion con respecto a la primera implementacion del Front end; Dentro de esta implementacion se encuentra lo siguiente
 ## Lista de Ítems
 
 1. [Template de inspiracion](##Template-de-inspiracion)
@@ -22,3 +23,6 @@ En esta fase se creo el diseño de toda la estructura HTML, para el diseño se u
 ## **Funcionalidades JavaScrip**
 En esta fase se implemento la interracion que tendra la pagina con el usuario, se agrego una interracion para que el mapa se pueda usar directamente desde la pagina sin tener que redirigir al usuario a google maps
 
+
+# ** Documentacion Front end V 0.2**
+¿
