@@ -1,33 +1,38 @@
+/* Reset y configuración inicial */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilos del body */
 body {
     font-family: 'TIM Merengue', sans-serif;
     line-height: 1.6;
-    background-color: #fffaf0; /* Fondo principal (Blanco Crema) */
     color: #333333; /* Texto principal (Gris Oscuro) */
+    background-image: url(/src/static/img/background\ tsume\ kirei.png);
+    background-size: cover; /* Asegúrate de que el fondo cubra toda la pantalla */
+    background-position: center; /* Centra la imagen de fondo */
 }
 
+/* Estilos del header */
 header {
     background-color: rgba(239, 233, 206, 0.0);
     position: fixed;
     width: 100%;
-    top: 0;
+    top: -10px;
     z-index: 1000;
+    height: auto; /* Permite que el header se ajuste a su contenido */
+    padding: 10px 0; /* Ajusta el padding */
 }
 
+/* Estilos de la navegación */
 nav {
     display: flex;
     justify-content: space-between; /* Cambiado a space-between para espacio entre elementos */
     align-items: center;
-    width: 100%; /* Cambiado a 100% para ocupar todo el ancho */
-    max-width: 1100px;
-    margin: 0px auto 10PX; /* Centra el nav en el contenedor */
+    width: 100%; /* Cambiado a 100% para ocupar todo el ancho*/
     background-color: rgba(239, 233, 206, 1);
-    border-radius: 25px;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.50);
     height: 100px;
@@ -55,6 +60,7 @@ nav ul li a {
     font-weight: normal; /* Cambiado a normal */
 }
 
+/* Estilos del botón de agendar */
 .btn-agenda {
     padding: 10px 20px;
     background-color: #f09c99; /* Fondo del botón de agendar */
@@ -63,12 +69,14 @@ nav ul li a {
     font-weight: bold;
     border: none;
     transition: background-color 0.3s;
+    text-decoration: none;
 }
 
 .btn-agenda:hover {
     background-color: #d88c8c; /* Hover del botón de agendar */
 }
 
+/* Estilos para el menú móvil */
 .menu-toggle {
     display: none; /* Oculta el menú en pantallas grandes */
     flex-direction: column;
@@ -112,11 +120,8 @@ nav ul li a {
     font-size: 20px;
 }
 
-nav ul {
-    display: flex; /* Muestra el menú por defecto en pantallas grandes */
-}
-
-@media (max-width: 768px) {
+/* Estilos de medios para pantallas pequeñas */
+@media (max-width: 1105px) {
     nav ul {
         flex-direction: column; /* Menú en columna */
         position: absolute;
@@ -128,6 +133,7 @@ nav ul {
         overflow: hidden; /* Oculta el contenido extra */
         transition: max-height 0.5s ease-in-out; /* Transición suave */
     }
+
     nav ul li {
         text-align: center; /* Centra los elementos del menú */
         padding: 10px 0;
@@ -141,16 +147,14 @@ nav ul {
         display: flex; /* Muestra el ícono de menú en pantallas pequeñas */
         cursor: pointer;
     }
-
 }
 
-
-
+/* Estilos del overlay principal */
 .overlay-box {
     margin-top: 100px;
     position: relative;
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 40px;
+    padding: 5%;
     border-radius: 20px;
     color: white;
 }
@@ -166,6 +170,7 @@ nav ul {
     font-style: italic;
 }
 
+/* Estilos de los botones */
 .buttons {
     display: flex;
     justify-content: center;
@@ -176,7 +181,6 @@ nav ul {
     text-decoration: none;
     color: white;
     border-radius: 30px;
-    font-size: 16px;
     transition: background-color 0.3s;
 }
 
@@ -196,15 +200,16 @@ nav ul {
     background-color: #d88c8c; /* Hover del botón (Rosa Palo) */
 }
 
+/* Estilos de las secciones */
 .section-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 40px;
-    max-width: 1800px;
-    margin: 0 0;
+    margin: 0;
     gap: 40px;
+    background-color: #f5f5f5;
 }
 
 .image-container {
@@ -264,6 +269,7 @@ nav ul {
     line-height: 1.6;
 }
 
+/* Estilos de los botones con borde */
 .btn-outline {
     display: inline-block;
     padding: 10px 20px;
@@ -280,6 +286,7 @@ nav ul {
     color: white;
 }
 
+/* Estilos de las secciones generales */
 .section {
     height: 100%;
     padding: 60px;
@@ -288,14 +295,10 @@ nav ul {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: rgba(255, 255, 255, 0.9); /* Fondo claro (Blanco translúcido) */
 }
 
 #home {
     background-image: url(/style/img/background\ tsume\ kirei.png);
-    background-size: cover;
-    background-attachment: fixed;
-    color: white;
 }
 
 p {
@@ -303,58 +306,119 @@ p {
     max-width: 600px;
 }
 
-.section:nth-child(even) {
-    background-color: #f7e8e0; /* Fondo alterno (Beige Claro) */
-}
-
 .section:nth-child(odd) {
     background-color: #fffaf0; /* Fondo alterno (Blanco Crema) */
 }
 
-/* Ajustes del mapa */
-#mapa {
+/* Sección de Ubicación */
+#Ubication {
+    text-align: center;
+    padding: 60px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+    background-color: #f5f5f5;
+    gap: 20px;
+}
+
+#text-locate{
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
 }
 
-#mapa .overlay-box {
-    margin-top: 100px; /* Ajusta el espacio superior si es necesario */
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro translúcido */
-    padding: 40px;
-    border-radius: 20px;
-    color: white;
-    max-width: 1000px;
-    margin: 0 auto; /* Centra el overlay */
+#text-locate h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #333333;
+    margin-bottom: 20px;
 }
 
+#text-locate p {
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 40px;
+}
+
+/* Contenedor de la ubicación */
+.location-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 40px;
+    padding: 20px;
+}
+
+/* Ajustes para el mapa */
 #mapa_loc {
-    height: 400px; /* Ajusta la altura del mapa */
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 20px; /* Espacio entre el texto y el mapa */
+    flex: 1;
+    max-width: 50%;
 }
+
+#mapa_loc iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Ajustes para la imagen */
+#locate {
+    flex: 1;
+    max-width: 50%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#locate img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .location-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #mapa_loc, #locate {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
 
 /* Precios */
 #precios {
     background-color: #f5f5f5;
-    padding: 60px 20px;
+    padding: 0px 20px 20px;
     text-align: center;
 }
 
 #precios h2 {
     font-size: 36px;
     margin-bottom: 20px;
+    color: #333333; /* Color del título */
+}
+
+#text-price{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #precios p {
     font-size: 18px;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 10px;
+    color: #666666; /* Texto descriptivo */
 }
 
+/* Diseño del grid para los precios */
 .precios-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -362,35 +426,60 @@ p {
     margin-top: 40px;
 }
 
+/* Estilos de cada tarjeta de precio */
 .precios-item {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s; /* Transición suave para hover */
+}
+
+.precios-item:hover {
+    transform: translateY(-5px); /* Efecto de elevación en hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa en hover */
 }
 
 .precios-item h3 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #f09c99; /* Color del título del precio (Rosa Suave) */
 }
 
 .precios-item p {
     font-size: 16px;
-    color: #666666;
+    color: #666666; /* Color del texto de la descripción */
 }
 
 .precios-item .price {
     font-size: 28px;
     color: #f09c99; /* Color de precio (Rosa Suave) */
     margin-top: 10px;
+    font-weight: bold; /* Resalta el precio */
 }
 
 .precios-item ul {
-    list-style: none;  /* Elimina las viñetas de la lista en la sección de precios */
-    padding: 0;        /* Elimina el padding extra si lo hay */
+    list-style: none; /* Elimina las viñetas de la lista en la sección de precios */
+    padding: 0; /* Elimina el padding extra si lo hay */
 }
 
 .precios-item ul li {
-    margin-bottom: 10px;  /* Añade un pequeño margen entre los elementos de la lista si lo deseas */
+    margin-bottom: 10px; /* Añade un pequeño margen entre los elementos de la lista */
+    color: #666666; /* Color del texto de las características */
+}
+/* Estilo del footer */
+footer {
+    background-color: rgba(239, 233, 206, 1);
+    color: #333333;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer p {
+    margin: 0;
 }
