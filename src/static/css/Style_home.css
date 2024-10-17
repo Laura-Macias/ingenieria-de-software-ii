@@ -12,16 +12,17 @@ body {
     background-color: beige;
     background-size: cover;
     background-position: center;
+    transition: background-color 0.5s ease;
 }
 
 /* Estilos del header */
 header {
-    position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     padding: 10px 0;
     background-color: rgba(239, 233, 206, 1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -33,7 +34,12 @@ nav {
 }
 
 .logo img {
-    width: 100px;
+    width: 120px;
+    transition: transform 0.5s;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
 }
 
 nav ul {
@@ -46,6 +52,12 @@ nav ul li a {
     text-decoration: none;
     color: #333333;
     font-size: 25px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.highlight {
+    color: #ff9800;
 }
 
 .menu-toggle {
@@ -61,9 +73,28 @@ nav ul li a {
     margin: 4px 0;
 }
 
+/*Estilo del perfil del cliente en el menu*/
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.client-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.client-name {
+    font-size: 18px;
+    color: #333333;
+}
+
 /* Margen superior para evitar superposición del contenido con el menú */
 main {
-    margin-top: 120px; /* Ajustado para evitar superposición */
+    margin-top: 120px;
 }
 
 /* Responsive */
@@ -98,6 +129,10 @@ main {
     }
 }
 
+/*secciones*/
+
+
+
 /* Cabecera de secciones */
 .catalog-header, .employees-header {
     display: flex;
@@ -118,29 +153,108 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Estilos para el carrusel */
-.carousel {
-    position: relative;
-    overflow: hidden;
-    width: 90%; /* Aumentamos el ancho del carrusel */
-    max-width: 800px;
-    margin: auto;
+.btn-see-more:hover, .btn-more-info:hover {
+    background-color: #e08900;
 }
 
-.carousel-track {
+/* Estilos del catálogo */
+.catalog-header-box {
+    background-color: #f5f5f5;  /* Fondo claro para destacar */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+    margin-bottom: 20px;  /* Espacio entre la caja y las imágenes */
+
+    margin-left: auto;   /* Centra horizontalmente */
+    margin-right: auto;
+    margin-top: -100px;
+}
+
+.catalog-header {
     display: flex;
-    gap: 10px;
-    transition: transform 0.5s ease;
-    will-change: transform;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.carousel img {
-    width: calc(50% - 10px); /* Mostrar 2 imágenes al mismo tiempo */
-    height: auto;
-    flex-shrink: 0;
-    border-radius: 10px;
+.catalog-header h2 {
+    font-size: 28px;
+    color: #333;
+}
+
+.btn-see-more {
+    padding: 10px 20px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Estilos del carrusel */
+
+.carousel-container {
+    text-align: center;
+    margin: 20px 0;
+
+}
+
+.carousel {
+    overflow: hidden; /* Para ocultar las imágenes que están fuera de la vista */
+    position: relative;
+}
+
+.carousel-images {
+    display: flex; /* Para alinear las imágenes en fila */
+    transition: transform 0.5s ease; /* Suaviza el desplazamiento */
+    width: 50%; /* Ajusta esto según la cantidad de imágenes */
+    gap: 20px;
+}
+
+.carousel-images img {
+    width: 25%; /* Ajusta el tamaño de las imágenes */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 10%;
+}
+
+.view-more {
+    margin-top: 10px;
+}
+
+/* Estilos de la sección de empleados */
+.employees-header-box {
+    background-color: #f5f5f5;  /* Fondo claro para destacar */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+    margin-bottom: 20px;  /* Espacio entre la caja y la cuadrícula */
+    margin-left: auto;   /* Centra horizontalmente */
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.employees-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.employees-header h2 {
+    font-size: 28px;
+    color: #333;
+}
+
+.btn-more-info {
+    padding: 10px 20px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 /* Estilos para la cuadrícula de empleados */
@@ -157,18 +271,26 @@ main {
     border-radius: 10px;
 }
 
-/* Estilo del footer */
-footer {
-    background-color: rgba(239, 233, 206, 1);
-    color: #333333;
-    padding: 20px;
-    text-align: center;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+/* Estilos de empleados */
+.employees-section .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-footer p {
-    margin: 0;
+.employees-section .employee img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    color: rgba(239, 233, 206, 1);
+    color: #333;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
