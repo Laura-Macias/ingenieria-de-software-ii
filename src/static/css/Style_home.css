@@ -1,0 +1,296 @@
+/* Estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'TIM Merengue', sans-serif;
+    line-height: 1.6;
+    color: #333333;
+    background-color: beige;
+    background-size: cover;
+    background-position: center;
+    transition: background-color 0.5s ease;
+}
+
+/* Estilos del header */
+header {
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0;
+    background-color: rgba(239, 233, 206, 1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 100px;
+}
+
+.logo img {
+    width: 120px;
+    transition: transform 0.5s;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 25px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.highlight {
+    color: #ff9800;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: #333;
+    margin: 4px 0;
+}
+
+/*Estilo del perfil del cliente en el menu*/
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.client-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.client-name {
+    font-size: 18px;
+    color: #333333;
+}
+
+/* Margen superior para evitar superposición del contenido con el menú */
+main {
+    margin-top: 120px;
+}
+
+/* Responsive */
+@media (max-width: 1105px) {
+    main {
+        margin-top: 140px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 100%;
+        background-color: rgba(239, 233, 206, 1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+
+    nav ul li {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    nav ul.active {
+        max-height: 300px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+/*secciones*/
+
+
+
+/* Cabecera de secciones */
+.catalog-header, .employees-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.catalog-header h2, .employees-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.btn-see-more, .btn-more-info {
+    padding: 8px 16px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-see-more:hover, .btn-more-info:hover {
+    background-color: #e08900;
+}
+
+/* Estilos del catálogo */
+.catalog-header-box {
+    background-color: #f5f5f5;  /* Fondo claro para destacar */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+    margin-bottom: 20px;  /* Espacio entre la caja y las imágenes */
+
+    margin-left: auto;   /* Centra horizontalmente */
+    margin-right: auto;
+    margin-top: -100px;
+}
+
+.catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.catalog-header h2 {
+    font-size: 28px;
+    color: #333;
+}
+
+.btn-see-more {
+    padding: 10px 20px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Estilos del carrusel */
+
+.carousel-container {
+    text-align: center;
+    margin: 20px 0;
+
+}
+
+.carousel {
+    overflow: hidden; /* Para ocultar las imágenes que están fuera de la vista */
+    position: relative;
+}
+
+.carousel-images {
+    display: flex; /* Para alinear las imágenes en fila */
+    transition: transform 0.5s ease; /* Suaviza el desplazamiento */
+    width: 50%; /* Ajusta esto según la cantidad de imágenes */
+    gap: 20px;
+}
+
+.carousel-images img {
+    width: 25%; /* Ajusta el tamaño de las imágenes */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 10%;
+}
+
+.view-more {
+    margin-top: 10px;
+}
+
+/* Estilos de la sección de empleados */
+.employees-header-box {
+    background-color: #f5f5f5;  /* Fondo claro para destacar */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+    margin-bottom: 20px;  /* Espacio entre la caja y la cuadrícula */
+    margin-left: auto;   /* Centra horizontalmente */
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.employees-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.employees-header h2 {
+    font-size: 28px;
+    color: #333;
+}
+
+.btn-more-info {
+    padding: 10px 20px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Estilos para la cuadrícula de empleados */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.employee img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/* Estilos de empleados */
+.employees-section .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.employees-section .employee img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    color: rgba(239, 233, 206, 1);
+    color: #333;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
