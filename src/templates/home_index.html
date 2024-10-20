@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsume Kirei</title>
+    <link rel="stylesheet" href="../static/css/Style_home.css">
+</head>
+<body>
+   <header>
+       <nav>
+           <div class="logo">
+               <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
+           </div>
+           <ul class="nav-links" id="navLinks">
+               <li><a href="#home" class="highlight">Home</a></li>
+               <li><a href="{{ url_for('catalog.catalog') }}">Catálogo</a></li>
+               <li><a href="#agendar">Agendar</a></li>
+               <li><a href="#calendario">Calendario</a></li>
+               <li><a href="#perfil">Perfil</a></li>
+           </ul>
+           <!-- Nueva sección con la imagen y el nombre del cliente -->
+           <div class="profile-section">
+               <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
+               <span class="client-name">Nombre del Cliente</span>
+           </div>
+           <div class="menu-toggle" id="menuToggle">
+               <div class="bar"></div>
+               <div class="bar"></div>
+               <div class="bar"></div>
+           </div>
+       </nav>
+   </header>
+
+   <!-- Contenido principal -->
+   <main>
+        <!-- Catálogo -->
+        <section class="catalog-section" id="catalogo">
+            <div class="catalog-header-box">
+                <div class="catalog-header">
+                    <h2>Catálogo</h2>
+                    <button class="btn-see-more">Ver más</button>
+                </div>
+                
+        </section>
+        <section>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <img src="/static/img/imagen2.jpg" alt="Imagen 1">
+                        <img src="/static/img/imagen3.jpg" alt="Imagen 2">
+                        <img src="/static/img/imagen4.jpg" alt="Imagen 3">
+                        <img src="/static/img/imagen5.jpg" alt="Imagen 4">
+                        <img src="/static/img/imagen2.jpg" alt="Imagen 1">
+                        <img src="/static/img/imagen4.jpg" alt="Imagen 3">
+                        <img src="/static/img/imagen3.jpg" alt="Imagen 2">
+                        <img src="/static/img/imagen4.jpg" alt="Imagen 3">
+                        <img src="/static/img/imagen3.jpg" alt="Imagen 2">
+                        <img src="/static/img/imagen4.jpg" alt="Imagen 3">
+                        <img src="/static/img/imagen3.jpg" alt="Imagen 2">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Empleados -->
+        <section class="employees-section">
+            <div class="employees-header-box">
+                <div class="employees-header">
+                    <h2>Empleados</h2>
+                    <button class="btn-more-info">Más información</button>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="employee">
+                    <img src="/static/img/empleado1.jpg" alt="Empleado 1">
+                </div>
+                <div class="employee">
+                    <img src="/static/img/empleado2.jpg" alt="Empleado 2">
+                </div>
+                <div class="employee">
+                    <img src="/static/img/empleado3.jpg" alt="Empleado 3">
+                </div>
+                <div class="employee">
+                    <img src="/static/img/empleado4.jpg" alt="Empleado 4">
+                </div>
+                <div class="employee">
+                    <img src="/static/img/empleado5.jpg" alt="Empleado 5">
+                </div>
+                <div class="employee">
+                    <img src="/static/img/empleado6.jpg" alt="Empleado 6">
+                </div>
+            </div>
+        </section>
+   </main>
+
+   <footer>
+       <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
+   </footer>
+
+   <script src="/src/js/menu.js"></script>
+   <script src="/src/js/photos.js"></script>
+</body>
+</html>

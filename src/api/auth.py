@@ -30,7 +30,7 @@ def login():
                 login_user(user)
                 flash("Inicio de sesión exitoso.")
                 
-                return redirect(url_for('home.home'))
+                return redirect(url_for('home_index.home_index'))
             else:
                 flash('Contraseña incorrecta.', 'error')
                 return redirect(url_for('auth.login'))

@@ -6,6 +6,8 @@ from .home  import home_bp
 from .signup import signup_bp
 from .recover_password import recover_password_bp
 from .reservation import reservation_bp
+from .home_index import home_index_bp
+from .catalog import catalog_bp
 from config import Config
 
 def create_app():
@@ -35,5 +37,7 @@ def create_app():
     app.register_blueprint(signup_bp)
     app.register_blueprint(recover_password_bp)
     app.register_blueprint(reservation_bp)
+    app.register_blueprint(home_index_bp)
+    app.register_blueprint(catalog_bp)
 
     return app

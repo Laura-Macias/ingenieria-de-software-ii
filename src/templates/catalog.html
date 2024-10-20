@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Servicios - Tsume Kirei</title>
+    <link rel="stylesheet" href="../static/css/Style_catalog.css">
+</head>
+<body>
+   <header>
+       <nav>
+           <div class="logo">
+               <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
+           </div>
+           <ul class="nav-links" id="navLinks">
+               <li><a href="#home">Home</a></li>
+               <li><a href="#catalogo">Catálogo</a></li>
+               <li><a href="#agendar">Agendar</a></li>
+               <li><a href="#calendario">Calendario</a></li>
+               <li><a href="#perfil">Perfil</a></li>
+           </ul>
+           <div class="profile-section">
+               <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
+               <span class="client-name">Nombre del Cliente</span>
+           </div>
+           <div class="menu-toggle" id="menuToggle">
+               <div class="bar"></div>
+               <div class="bar"></div>
+               <div class="bar"></div>
+           </div>
+       </nav>
+   </header>
+
+   <!-- Vista del catálogo de servicios -->
+   <main>
+       <section class="catalog-view">
+           <h2>Catálogo de Servicios</h2>
+           <div class="catalog-grid">
+               <div class="service-item">
+                   <img src="/static/img/path_to_image_service1.jpg" alt="Service 1">
+                   <h3>Nombre del Servicio 1</h3>
+                   <p>Descripción del servicio 1.</p>
+                   <span class="price">$15.000</span>
+                   <a href="{{ url_for('reservation.reservation') }}" class="select-button">Seleccionar</a>               </div>
+               <div class="service-item">
+                   <img src="/static/img/path_to_image_service2.jpg" alt="Service 2">
+                   <h3>Nombre del Servicio 2</h3>
+                   <p>Descripción del servicio 2.</p>
+                   <span class="price">$20.000</span>
+                   <button class="select-button">Seleccionar</button>
+               </div>
+               <div class="service-item">
+                   <img src="/static/img/path_to_image_service3.jpg" alt="Service 3">
+                   <h3>Nombre del Servicio 3</h3>
+                   <p>Descripción del servicio 3.</p>
+                   <span class="price">$30.000</span>
+                   <button class="select-button">Seleccionar</button>
+               </div>
+               <div class="service-item">
+                   <img src="/static/img/path_to_image_service4.jpg" alt="Service 4">
+                   <h3>Nombre del Servicio 4</h3>
+                   <p>Descripción del servicio 4.</p>
+                   <span class="price">$45.000</span>
+                   <button class="select-button">Seleccionar</button>
+               </div>
+               <div class="service-item">
+                   <img src="/static/img/path_to_image_service5.jpg" alt="Service 5">
+                   <h3>Nombre del Servicio 5</h3>
+                   <p>Descripción del servicio 5.</p>
+                   <span class="price">$55.000</span>
+                   <button class="select-button">Seleccionar</button>
+               </div>
+               <div class="service-item">
+                   <img src="/static/img/path_to_image_service6.jpg" alt="Service 6">
+                   <h3>Nombre del Servicio 6</h3>
+                   <p>Descripción del servicio 6.</p>
+                   <span class="price">$85.000</span>
+                   <button class="select-button">Seleccionar</button>
+               </div>
+               <div class="service-item">
+                   <img src="/static/img/path_to_image_service7.jpg" alt="Service 7">
+                   <h3>Nombre del Servicio 7</h3>
+                   <p>Descripción del servicio 7.</p>
+                   <span class="price">$100.000</span>
+                   <button class="select-button">Seleccionar</button>
+               </div>
+               <div class="service-item">
+                <img src="/static/img/path_to_image_service8.jpg" alt="Service 8">
+                <h3>Nombre del Servicio 8</h3>
+                <p>Descripción del servicio 8.</p>
+                <span class="price">$110.000</span>
+                <button class="select-button">Seleccionar</button>
+            </div>
+               <div class="service-item">
+                   <img src="/static/img/path_to_image_service9.jpg" alt="Service 9">
+                   <h3>Nombre del Servicio 9</h3>
+                   <p>Descripción del servicio 9.</p>
+                   <span class="price">$185.000</span>
+                   <button class="select-button">Seleccionar</button>
+               </div>
+               <div class="service-item">
+                <img src="/static/img/path_to_image_service10.jpg" alt="Service 10">
+                <h3>Nombre del Servicio 10</h3>
+                <p>Descripción del servicio 10.</p>
+                <span class="price">$55.000</span>
+                <button class="select-button">Seleccionar</button>
+           </div>
+            <div class="service-item">
+                <img src="/static/img/path_to_image_service11.jpg" alt="Service 11">
+                <h3>Nombre del Servicio 11</h3>
+                <p>Descripción del servicio 11.</p>
+                <span class="price">$65.000</span>
+                <button class="select-button">Seleccionar</button>
+            </div>
+            <div class="service-item">
+                <img src="/static/img/path_to_image_service12.jpg" alt="Service 12">
+                <h3>Nombre del Servicio 12</h3>
+                <p>Descripción del servicio 12.</p>
+                <span class="price">$90.000</span>
+                <button class="select-button">Seleccionar</button>
+            </div>
+            <div class="service-item">
+                <img src="/static/img/path_to_image_service13.jpg" alt="Service 13">
+                <h3>Nombre del Servicio 13</h3>
+                <p>Descripción del servicio 13.</p>
+                <span class="price">$100.000</span>
+                <button class="select-button">Seleccionar</button>
+            </div>
+            <div class="service-item">
+                <img src="/static/img/path_to_image_service14.jpg" alt="Service 14">
+                <h3>Nombre del Servicio 14</h3>
+                <p>Descripción del servicio 14.</p>
+                <span class="price">$65.000</span>
+                <button class="select-button">Seleccionar</button>
+            </div>
+            <div class="service-item">
+                <img src="/static/img/path_to_image_service15.jpg" alt="Service 15">
+                <h3>Nombre del Servicio 15</h3>
+                <p>Descripción del servicio 15.</p>
+                <span class="price">$110.000</span>
+                <button class="select-button">Seleccionar</button>
+            </div>
+            <div class="service-item">
+                <img src="/static/img/path_to_image_service16.jpg" alt="Service 16">
+                <h3>Nombre del Servicio 16</h3>
+                <p>Descripción del servicio 16.</p>
+                <span class="price">$100.000</span>
+                <button class="select-button">Seleccionar</button>
+            </div>
+       </section>
+   </main>
+
+   <footer>
+       <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
+   </footer>
+
+   <script src="/src/js/menu.js"></script>
+   <script src="/src/js/catalog.js"></script>
+</body>
+</html>
