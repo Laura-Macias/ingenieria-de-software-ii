@@ -16,10 +16,9 @@
                     <label for="esthetician">Esteticista:</label>
                     <select id="esthetician" name="esthetician" required>
                         <option value="" disabled selected>Seleccione un esteticista</option>
-                        <option value="esthetician1">Esteticista 1</option>
-                        <option value="esthetician2">Esteticista 2</option>
-                        <option value="esthetician3">Esteticista 3</option>
-                        <!-- Agrega más esteticistas según sea necesario -->
+                        {% for staff in staff %}
+                            <option value="esthetician1">{{ staff.name }} {{ staff.last_name }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 

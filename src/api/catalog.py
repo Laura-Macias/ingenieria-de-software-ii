@@ -1,13 +1,14 @@
-from flask import Blueprint, render_template, jsonify, redirect, url_for, flash
+from flask import Blueprint, render_template, jsonify
 from .models.catalog import Catalogo  
 from config import Config
 
 # Se define el Blueprint para las rutas del catálogo
 catalog_bp = Blueprint('catalog', __name__, url_prefix='/catalog')
+supabase = Config.supabase
 
 # Función para obtener el catálogo
 def obtener_catalogo():
-    supabase = Config.supabase
+    
     try:
         response = supabase.table('Catalog').select('*').execute()
         
@@ -20,7 +21,7 @@ def obtener_catalogo():
         return []
     
 def verificar_disponibilidad(servicio_id):
-    supabase = Config.supabase
+    
     try:
         # Ejemplo de consulta de disponibilidad en la base de datos
         response = supabase.table('Catalog').select('*').eq('service_id', servicio_id).execute()
