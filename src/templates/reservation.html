@@ -1,72 +1,38 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservación</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style reservation.css') }}">
+    <title>Formulario de Reserva - Tsume Kirei</title>
+    <link rel="stylesheet" href="../static/css/style_reservation.css"> <!-- CSS para el estilo del formulario -->
 </head>
 <body>
-
-    <!-- Barra de navegación -->
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Quiénes Somos</a></li>
-                <li><a href="#">Ubicación</a></li>
-                <li><a href="#">Precios</a></li>
-                <li><a href="#" class="btn-agenda active">Agenda tu Cita</a></li> <!-- Resaltado -->
-            </ul>
-            <div class="menu-toggle" id="menuToggle">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </nav>
-    </header>
-
+   
     <main>
-        <section class="booking-section">
-            <div class="booking-form-wrap">
-                <h2>Reservación</h2>
-                <form id="booking-form" action="#" method="POST">
-                    <label for="name">Confirmar nombre:</label>
-                    <!-- Campo para confirmar el nombre, uso de atributo pattern para condicionar los datos que recibe el campo
-                     uso de atributo required para que el campo se complete-->
-                    <input type="text" id="name" name="name" required pattern="[A-Za-z\s]+" title="Ingrese un nombre y apellido válidos">
-
-                    <label for="cell-number">Número de celular:</label>
-                     <!-- Campo para definir el numero de celular, uso de atributo pattern para condicionar los datos que recibe el campo
-                     uso de atributo required para que el campo se complete-->
-                    <input type="tel" id="cell-number" name="cell-number" required pattern="\d{10}" title="Ingrese un número celular válido de 10 dígitos">
-
-                    <label for="date">Fecha:</label>
-                    <input type="date" id="date" name="date" required><!-- Campo de entrada para fecha -->
-
+        <div class="reservation-form-container">
+            <h2>Formulario de Reserva</h2>
+            <form id="reservationForm" action="{{ url_for('pay.pay') }}" method="POST">
+                <div class="input-box">
+                    <label for="esthetician">Esteticista:</label>
+                    <select id="esthetician" name="esthetician" required>
+                        <option value="" disabled selected>Seleccione un esteticista</option>
+                        <option value="esthetician1">Esteticista 1</option>
+                        <option value="esthetician2">Esteticista 2</option>
+                        <option value="esthetician3">Esteticista 3</option>
+                        <!-- Agrega más esteticistas según sea necesario -->
+                    </select>
+                </div>
+                
+                
+                <div class="input-box">
                     <label for="time">Hora:</label>
-                    <input type="time" id="time" name="time" required><!-- Campo de entrada para hora -->
+                    <input type="time" id="time" name="time" required>
+                </div>
 
-                    <label for="service-provider">Nombre de la persona que brindará el servicio:</label>
-                    <input type="text" id="service-provider" name="service-provider" required pattern="[A-Za-z\s]+" title="Solo se permiten letras"><!-- Campo de entrada para el nombre del proveedor -->
-
-                    <label for="details">Detalles adicionales (opcional):</label>
-                    <textarea id="details" name="details" rows="4" placeholder="Escribe aquí..."></textarea><!-- Área de texto para detalles adicionales -->
-
-                    <button class="form-control" type="submit">Enviar</button><!-- Botón para enviar el formulario -->
-                </form>
-            </div>
-                </form>
-            </div>
-        </section>
+                <button type="submit" class="btn">Confirmar</button>
+            </form>
+        </div>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Tsume kirei. Todos los derechos reservados.</p><!-- Pie de página -->
-    </footer>
 
 </body>
 </html>

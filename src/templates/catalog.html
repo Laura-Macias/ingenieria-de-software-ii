@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Servicios - Tsume Kirei</title>
+    <link rel="stylesheet" href="../static/css/Style_catalog.css">
+</head>
+<body>
+   <header>
+       <nav>
+           <div class="logo">
+               <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
+           </div>
+           <ul class="nav-links" id="navLinks">
+               <li><a href="{{ url_for('home_index.home_index') }}">Home</a></li>
+               <li><a href="#catalogo">Catálogo</a></li>
+               <li><a href="#agendar">Agendar</a></li>
+               <li><a href="#calendario">Calendario</a></li>
+               <li><a href="#perfil">Perfil</a></li>
+           </ul>
+           <div class="profile-section">
+               <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
+               <span class="client-name">Nombre del Cliente</span>
+           </div>
+           <div class="menu-toggle" id="menuToggle">
+               <div class="bar"></div>
+               <div class="bar"></div>
+               <div class="bar"></div>
+           </div>
+       </nav>
+   </header>
+
+   <!-- Vista del catálogo de servicios -->
+   <main>
+       <section class="catalog-view">
+
+           <h2>Catálogo de Servicios</h2>
+           <div class="catalog-grid">
+               {% for servicios in servicios %}
+               <div class="service-item">
+                   <img src="{{ servicios.image }}" alt="Service 1">
+                   <h3>{{ servicios.product_name }}</h3>
+                   <p>{{ servicios.description }}</p>
+                   <span class="price">{{ servicios.price }}</span>
+                   <a href="{{ url_for('calendar.calendar') }}" class="select-button">Seleccionar</a>               
+               </div>
+               {% endfor %}
+       </section>
+   </main>
+
+   <footer>
+       <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
+   </footer>
+
+   <script src="/src/js/menu.js"></script>
+   <script src="/src/js/catalog.js"></script>
+</body>
+</html>
