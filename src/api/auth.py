@@ -16,14 +16,14 @@ def login():
         password = request.form['password']
 
         # Consulta a Supabase para verificar el usuario
-        response = supabase.table('Customer').select("*").eq('email', email).execute()
+        response = supabase.table('Customer').select("*").eq('email_customer', email).execute()
  
         if response.data:  # Si la respuesta tiene datos
             user_data = response.data[0]  # Obtenemos el primer usuario devuelto
             
-            if check_password_hash(user_data['password'], password):
+            if check_password_hash(user_data['password_customer'], password):
                 # Autenticar el usuario
-                user = Customer(user_data['id_customer'], user_data['name'], user_data['last_name'], user_data['address'], user_data['phone'], user_data['email'])
+                user = Customer(user_data['id_customer'], user_data['name_customer'], user_data['last_name_customer'], user_data['address_customer'], user_data['phone_customer'], user_data['email_customer'])
                 # se guarda la informacion del usuario en login_user para que se pueda usar en otros procesos
                 login_user(user)
                 

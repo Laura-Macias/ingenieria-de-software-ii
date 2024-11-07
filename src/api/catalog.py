@@ -24,7 +24,7 @@ def verificar_disponibilidad(servicio_id):
     
     try:
         # Ejemplo de consulta de disponibilidad en la base de datos
-        response = supabase.table('Catalog').select('*').eq('service_id', servicio_id).execute()
+        response = supabase.table('Catalog').select('*').eq('id_catalog', servicio_id).execute()
         return bool(response.data)  # Retorna True si el servicio está disponible
     except Exception as e:
         print(f"Error al verificar disponibilidad: {e}")

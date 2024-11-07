@@ -43,7 +43,7 @@
                    <h3>{{ servicios.product_name }}</h3>
                    <p>{{ servicios.description }}</p>
                    <span class="price">{{ servicios.price }}</span>
-                   <a href="{{ url_for('calendar.calendar') }}" class="select-button">Seleccionar</a>               
+                   <a href="{{ url_for('calendar.calendar', service_id=servicios.id) }}" class="select-button">Seleccionar</a>               
                </div>
                {% endfor %}
        </section>

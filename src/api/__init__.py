@@ -30,7 +30,7 @@ def create_app():
         response = supabase.table('Customer').select('*').eq('id_customer', user_id).execute()
         if response.data:
             user_data = response.data[0]
-            return Customer(user_data['id_customer'], user_data['name'], user_data['last_name'], user_data['address'], user_data['phone'], user_data['email'])
+            return Customer(user_data['id_customer'], user_data['name_customer'], user_data['last_name_customer'], user_data['address_customer'], user_data['phone_customer'], user_data['email_customer'])
         return None
 
     # Registrar los bluprints de cada logica de la aplicacion
