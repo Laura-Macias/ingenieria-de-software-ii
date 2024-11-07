@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasarela de Pagos</title>
+    <link rel="stylesheet" href="/src/static/css/Style_pay.css"> <!-- Asegúrate de que esta ruta sea correcta -->
+</head>
+<body>
+    <div id="payment-form">
+        <h2>Selecciona tu método de pago</h2>
+        <form>
+            <div>
+                <input type="radio" name="payment" value="card"> Tarjeta de crédito
+                <!--<input type="radio" name="payment" value="PSE"> PSE-->
+            </div>
+            <div id="card-details" style="display: none;">
+                <label for="card-holder">Nombre del titular:</label>
+                <input type="text" id="card-holder" required>
+                <label for="card-number">Número de tarjeta:</label>
+                <input type="text" id="card-number" pattern="\d{16}" maxlength="16" required placeholder="1234 5678 9012 3456">
+                <label for="card-cvv">CVV:</label> 
+                <input type="text" id="card-cvv" pattern="\d{3}" maxlength="3" required placeholder="123">
+                <label for="card-expiration">Fecha de expiración (MM/AA):</label>
+                <input type="text" id="card-expiration" pattern="^(0[1-9]|1[0-2])\/\d{2}$" maxlength="5" required placeholder="MM/AA">
+            </div>
+           <!---- <div id="PSE" style="display: none;">
+                <label for="PSE-email">Email:</label>
+                <input type="email" id="PSE-email" required>
+                <label for="PSE-bank">Banco:</label>
+                <select id="PSE-bank" required>
+                    <option value="" disabled selected>Selecciona tu banco</option>
+                    <option value="bank1">Banco de Bogotá</option>
+                    <option value="bank2">Bancolombia</option>
+                    <option value="bank3">Davivienda</option>
+                    <option value="bank4">BBVA</option>
+                    <option value="bank5">Banco Popular</option>
+                </select>
+            </div> -->
+            <button type="submit" id="submit-button" disabled>Pagar</button>
+        </form>
+    </div>
+
+    <div id="processing" style="display: none;">
+        <h2>Procesando tu pago...</h2>
+        <div class="loader"></div>
+    </div>
+
+    <div id="confirmation" style="display: none;">
+        <h2>¡Pago realizado con éxito!</h2>
+        <p>Tu orden ha sido procesada.</p>
+    </div>
+
+    <script src="/src/static/js/pay.js"></script> <!-- Asegúrate de que esta ruta sea correcta -->
+</body>
+</html>

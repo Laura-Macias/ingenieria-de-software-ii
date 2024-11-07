@@ -260,17 +260,26 @@ main {
 /* Estilos para la cuadrícula de empleados */
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 10px; /* Espacio entre los elementos */
     margin-top: 20px;
+    justify-items: center; /* Centra las imágenes dentro de las celdas */
 }
 
 .employee img {
     width: 100%;
+    max-width: 250px; /* Limita el ancho de la imagen */
     height: auto;
-    border-radius: 10px;
+    border-radius: 10%; /* Bordes redondeados */
 }
 
+.employee-name {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333333;
+    font-weight: bold;
+    text-align: center; /* Asegura que el texto esté centrado */
+}
 
 /* Estilos de empleados */
 .employees-section .grid {

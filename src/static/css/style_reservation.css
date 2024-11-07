@@ -5,195 +5,105 @@
 }
 
 body {
-    font-family: 'TIM Merengue', sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    color: #333333;
-    background-image: url('/static/img/Imagen1.jpg');
-    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
-}
-
-/* Estilos del header */
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 10px 0;
-    background-color: rgba(239, 233, 206, 1);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    height: 100px;
-}
-
-.logo img {
-    width: 100px;
-}
-
-nav ul {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333333;
-    font-size: 25px;
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.bar {
-    height: 3px;
-    width: 25px;
-    background-color: #333;
-    margin: 4px 0;
-}
-
-/* Estilo del perfil del cliente en el menú */
-.profile-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-right: 20px;
-}
-
-.client-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.client-name {
-    font-size: 18px;
-    color: #333333;
-}
-
-/* Margen superior para evitar superposición del contenido con el menú */
-main {
-    margin-top: 120px; /* Ajusta este valor si es necesario */
+    background-color: #fffaf0; /* Fondo blanco crema */
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 120px); /* Asegura que el contenido ocupe el resto de la pantalla */
+    align-items: center; /* Centrado vertical */
+    min-height: 100vh; 
+    padding: 20px;
+    overflow: hidden;
+    flex-direction: column; 
 }
 
-/* Estilos del formulario */
+
 .reservation-form-container {
-    width: 90%; /* Cambiado para ser responsivo */
-    max-width: 420px; /* Asegura que no sea más ancho que esto */
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    color: black; /* Cambiado a negro */
-    border-radius: 15px; /* Bordes redondeados */
-    padding: 25px 30px; /* Espaciado interno */
-    margin: 20px; /* Margen en todos los lados */
-    text-align: center; /* Centrar el texto dentro del formulario */
+    width: 100%;
+    max-width: 420px; 
+    padding: 30px 20px;
+    background-color: #f7e8e0; /* Fondo beige claro */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 30px;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .reservation-form-container h2 {
-    font-size: 28px; /* Tamaño de fuente ajustado para dispositivos móviles */
-    margin-bottom: 20px; /* Espaciado debajo del título */
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333333; /* Texto gris oscuro */
 }
 
 .input-box {
-    margin: 15px 0; /* Espaciado entre los campos */
+    margin: 15px 0;
 }
 
 .input-box label {
-    font-size: 20px; /* Aumenta el tamaño del texto de las etiquetas */
-    color: #000000; /* Color oscuro */
+    font-size: 18px;
+    color: #333333; /* Texto gris oscuro */
 }
 
 .input-box input,
 .input-box select {
-    width: 100%; /* Asegura que el campo use todo el ancho disponible */
-    height: 50px; /* Altura del campo de entrada */
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #000; /* Color de texto en negro */
-    padding: 10px 20px; /* Espaciado interno */
-}
-
-.input-box input::placeholder {
-    color: #ccc; /* Color del placeholder */
-}
-
-.reservation-form-container .btn {
     width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
+    height: 40px;
+    border: 2px solid #ddd; /* Borde gris suave */
+    border-radius: 5px;
+    padding: 5px 10px;
     font-size: 16px;
-    color: #333;
-    font-weight: 600;
 }
 
-/* Responsive */
+.input-box select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+    background-color: #f09c99; /* Fondo rosa suave */
+    color: #fffaf0; /* Texto blanco crema */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #d88c8c; /* Hover con rosa palo */
+}
+
+nav {
+    background-color: rgba(239, 233, 206, 0.50); /* Fondo beige semi-transparente */
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        position: absolute;
-        top: 100px;
-        right: 0;
-        width: 100%;
-        background-color: rgba(239, 233, 206, 1);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease-in-out;
-    }
-
-    nav ul li {
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    nav ul.active {
-        max-height: 300px;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
     .reservation-form-container {
-        padding: 20px; /* Espaciado reducido para pantallas pequeñas */
+        padding: 20px;
     }
 
     .reservation-form-container h2 {
-        font-size: 24px; /* Tamaño de fuente ajustado para pantallas pequeñas */
+        font-size: 24px;
+    }
+
+    .input-box label {
+        font-size: 16px;
     }
 
     .input-box input,
     .input-box select {
-        height: 40px; /* Altura del campo de entrada en pantallas pequeñas */
-        font-size: 14px; /* Tamaño de fuente reducido */
+        height: 35px;
+        font-size: 14px;
     }
 
-    .reservation-form-container .btn {
-        height: 40px; /* Altura del botón en pantallas pequeñas */
-        font-size: 14px; /* Tamaño de fuente del botón en pantallas pequeñas */
+    .btn {
+        font-size: 16px;
+        height: 35px;
     }
 }

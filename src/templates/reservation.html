@@ -7,25 +7,11 @@
     <link rel="stylesheet" href="../static/css/style_reservation.css"> <!-- CSS para el estilo del formulario -->
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="#agendar">Agendar</a></li>
-                <li><a href="#calendario">Calendario</a></li>
-                <li><a href="#perfil">Perfil</a></li>
-            </ul>
-        </nav>
-    </header>
-
+   
     <main>
         <div class="reservation-form-container">
             <h2>Formulario de Reserva</h2>
-            <form id="reservationForm">
+            <form id="reservationForm" action="{{ url_for('pay.pay') }}" method="POST">
                 <div class="input-box">
                     <label for="esthetician">Esteticista:</label>
                     <select id="esthetician" name="esthetician" required>
@@ -37,10 +23,6 @@
                     </select>
                 </div>
                 
-                <div class="input-box">
-                    <label for="date">Fecha:</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
                 
                 <div class="input-box">
                     <label for="time">Hora:</label>
@@ -52,7 +34,5 @@
         </div>
     </main>
 
-    <footer>
-    </footer>
 </body>
 </html>

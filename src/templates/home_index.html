@@ -16,13 +16,12 @@
                <li><a href="#home" class="highlight">Home</a></li>
                <li><a href="{{ url_for('catalog.catalog') }}">Catálogo</a></li>
                <li><a href="#agendar">Agendar</a></li>
-               <li><a href="#calendario">Calendario</a></li>
+               <li><a href="{{ url_for('calendar.calendar') }}">Calendario</a></li>
                <li><a href="#perfil">Perfil</a></li>
            </ul>
-           <!-- Nueva sección con la imagen y el nombre del cliente -->
            <div class="profile-section">
                <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
-               <span class="client-name">Nombre del Cliente</span>
+               <span class="client-name">{{ current_user.name }} {{ current_user.last_name }}</span>
            </div>
            <div class="menu-toggle" id="menuToggle">
                <div class="bar"></div>
@@ -32,9 +31,7 @@
        </nav>
    </header>
 
-   <!-- Contenido principal -->
    <main>
-        <!-- Catálogo -->
         <section class="catalog-section" id="catalogo">
             <div class="catalog-header-box">
                 <div class="catalog-header">
@@ -63,7 +60,6 @@
             </div>
         </section>
 
-        <!-- Empleados -->
         <section class="employees-section">
             <div class="employees-header-box">
                 <div class="employees-header">
@@ -74,21 +70,27 @@
             <div class="grid">
                 <div class="employee">
                     <img src="/static/img/empleado1.jpg" alt="Empleado 1">
+                    <p class="employee-name">Empleado 1</p>
                 </div>
                 <div class="employee">
                     <img src="/static/img/empleado2.jpg" alt="Empleado 2">
+                    <p class="employee-name">Empleado 2</p>
                 </div>
                 <div class="employee">
                     <img src="/static/img/empleado3.jpg" alt="Empleado 3">
+                    <p class="employee-name">Empleado 3</p>
                 </div>
                 <div class="employee">
                     <img src="/static/img/empleado4.jpg" alt="Empleado 4">
+                    <p class="employee-name">Empleado 4</p>
                 </div>
                 <div class="employee">
                     <img src="/static/img/empleado5.jpg" alt="Empleado 5">
+                    <p class="employee-name">Empleado 5</p>
                 </div>
                 <div class="employee">
                     <img src="/static/img/empleado6.jpg" alt="Empleado 6">
+                    <p class="employee-name">Empleado 6</p>
                 </div>
             </div>
         </section>

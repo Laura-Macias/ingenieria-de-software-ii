@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 10px;
+    background-color: #fffaf0; /* Fondo principal blanco crema */
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px 20px;
+    background-color: #f7e8e0; /* Fondo alterno beige claro */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.calendar .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.calendar .header .month {
+    font-size: 25px;
+    font-weight: 600;
+    color: #333333; /* Texto principal gris oscuro */
+}
+
+.calendar .header .btns {
+    display: flex;
+    gap: 10px;
+}
+
+.calendar .header .btns .btn {
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #fffaf0; /* Texto en blanco crema */
+    background-color: #333333; /* Botón oscuro gris oscuro */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calendar .header .btns .btn:hover {
+    background-color: #555555; /* Hover del botón gris más claro */
+}
+
+.weekdays {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.weekdays .day {
+    width: calc(100% / 7 - 10px);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333; /* Texto principal gris oscuro */
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.days .day {
+    width: calc(100% / 7 - 10px);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333; /* Texto principal gris oscuro */
+    background-color: #fff; /* Fondo blanco */
+    transition: background-color 0.3s ease;
+}
+
+.days .day:not(.next):not(.prev):hover {
+    color: #fffaf0; /* Texto en blanco crema */
+    background-color: #f09c99; /* Fondo rosa suave */
+    transform: scale(1.05);
+}
+
+.days .day.today {
+    color: #fffaf0; /* Texto en blanco crema */
+    background-color: #f09c99; /* Fondo rosa suave */
+}
+
+.days .day.next,
+.days .day.prev {
+    color: #ccc; /* Texto gris claro */
+}
+
+.btn-appointment {
+    background-color: #f09c99; /* Fondo del botón de agendar citas */
+    color: #fffaf0; /* Texto en blanco crema */
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.btn-appointment:hover {
+    background-color: #d88c8c; /* Hover del botón rosa palo */
+}
+
+nav {
+    background-color: rgba(239, 233, 206, 0.50); 
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.credits a {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #aaa;
+}
+
+.credits span {
+    color: #f09c99; /* Enlace rosa suave */
+}
