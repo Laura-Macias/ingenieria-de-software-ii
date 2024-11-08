@@ -11,7 +11,7 @@ def obtener_staff():
     
     try:
         response = supabase.table('Staff').select('*').execute()
-        print(response)
+        #print(response)
         if not response.data:
             print("No se encontraron los manicuristas en la base de datos.")
             return []

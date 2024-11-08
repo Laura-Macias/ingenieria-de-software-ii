@@ -19,10 +19,20 @@
                <li><a href="#calendario">Calendario</a></li>
                <li><a href="#perfil">Perfil</a></li>
            </ul>
-           <div class="profile-section">
+
+           <!-- Botones de Agendar y Carrito -->
+           <div class="header-buttons">
+            <!-- Botón de Carrito -->
+            <button id="cartButton" onclick="toggleCart()">
+                Carrito (<span id="cartCount">0</span>)
+            </button>
+            <!-- Botón de Agendar -->
+            <a id="scheduleButton" href="{{ url_for('calendar.calendar') }}" class="select-button">Agendar</a>
+            </div>
+            <div class="profile-section">
                <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
-               <span class="client-name">Nombre del Cliente</span>
-           </div>
+               <span class="client-name">{{ current_user.name }} {{ current_user.last_name }}</span>
+            </div>
            <div class="menu-toggle" id="menuToggle">
                <div class="bar"></div>
                <div class="bar"></div>
@@ -35,25 +45,35 @@
    <main>
        <section class="catalog-view">
 
-           <h2>Catálogo de Servicios</h2>
-           <div class="catalog-grid">
-               {% for servicios in servicios %}
-               <div class="service-item">
-                   <img src="{{ servicios.image }}" alt="Service 1">
-                   <h3>{{ servicios.product_name }}</h3>
-                   <p>{{ servicios.description }}</p>
-                   <span class="price">{{ servicios.price }}</span>
-                   <a href="{{ url_for('calendar.calendar', service_id=servicios.id) }}" class="select-button">Seleccionar</a>               
-               </div>
-               {% endfor %}
+            <h2>Catalogo de Servicios</h2> 
+            <div class='catalog-grid'>
+                {% for servicios in servicios %}
+                <div class="service-item">
+                    <img src="{{ servicios.image }}" alt="Service 1">
+                    <h3>{{ servicios.service_name }}</h3>
+                    <p>{{ servicios.description }}</p>
+                    <span class="price">${{ "{:,.0f}".format(servicios.price) }}</span>
+                    <!-- Botón con data attribute para identificar el servicio -->
+                    <button class="select-button" 
+                        data-service-name="{{ servicios.service_name }}"onclick="addToCart('{{ servicios.service_name }}', {{ servicios.price }})"> Seleccionar </button>
+                </div>
+                {% endfor %}
+            </div>
        </section>
    </main>
+
+   <!-- Carrito (invisible inicialmente) -->
+   <div id="cartDetails" class="cart-details" style="display: none;">
+        <h3>Carrito</h3>
+        <ul id="cartItems"></ul>
+        <p>Total: $<span id="totalPrice">0</span></p>
+    </div>
 
    <footer>
        <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
    </footer>
 
    <script src="/src/js/menu.js"></script>
-   <script src="/src/js/catalog.js"></script>
+   <script src="{{ url_for('static', filename='js/catalog.js') }}"></script>
 </body>
 </html>
