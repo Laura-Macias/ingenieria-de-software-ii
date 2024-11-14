@@ -25,7 +25,7 @@ def signup():
         password = request.form['password']
 
         # Verifica si el correo ya existe
-        response = supabase.table('Customer').select('email').eq('email', email).execute()
+        response = supabase.table('Customer').select('email_customer').eq('email_customer', email).execute()
 
         # Si  el correo ya existe se envia una alerta al usuairo y se vuelve a cargar la vista del signup
         if response.data and len(response.data) > 0:
@@ -37,12 +37,12 @@ def signup():
 
         # Inserta los datos en la base de datos
         response = supabase.table('Customer').insert({
-            'name': name.upper(),
-            'last_name': last_name.upper(),
-            'phone': phone,
-            'email': email,
-            'date': date.today().isoformat(),
-            'password': hashed_password
+            'name_customer': name.upper(),
+            'last_name_customer': last_name.upper(),
+            'phone_customer': phone,
+            'email_customer': email,
+            'registration_date_customer': date.today().isoformat(),
+            'password_customer': hashed_password
         }).execute()
 
         # Si la variable tiene datos se confirma que se gaurdo en la base de datos y se envia un correo de confrimacion

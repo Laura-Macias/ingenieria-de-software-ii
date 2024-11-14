@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 dayElement.classList.add("today");
             }
 
-            // Al hacer click en un día, mostrar el iframe
+            // Al hacer clic en un día, mostrar el iframe
             dayElement.addEventListener("click", () => {
                 document.getElementById('form-container').style.display = 'block'; 
             });
@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Manejadores de eventos para los botones de navegación
     prevButton.addEventListener("click", () => {
         currentMonth--;
         if (currentMonth < 0) {
@@ -76,20 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderCalendar();
 
-    // Escuchar mensajes del iframe
     window.addEventListener("message", function(event) {
-        // Verificar que el mensaje provenga del iframe
         if (event.origin !== window.location.origin) {
-            return;  // Ignorar mensajes de orígenes no confiables
+            return;
         }
 
-        // Verificar si el mensaje es "formSubmitted"
         if (event.data === "formSubmitted") {
-            // Ocultar el iframe
             document.getElementById("form-container").style.display = "none";
 
-            // Redirigir a otra página (en este caso la URL de pago)
-            window.location.href = "{{ url_for('pay.pay') }}"; // Aquí usas el URL de pago o el que desees
+            window.location.href = "/catalog";
         }
     });
 });

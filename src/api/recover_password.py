@@ -14,13 +14,12 @@ def recover_password():
         email = request.form['email']
 
         # Consulta a Supabase para verificar el usuario
-        response = supabase.table('Customer').select("*").eq('email', email).execute()
+        response = supabase.table('Customer').select("*").eq('email_customer', email).execute()
  
         if response.data:  # Si la respuesta tiene datos
             user_data = response.data[0]  # Obtenemos el primer usuario devuelto
-            print(user_data['name'])
             # Enviamos un correo con los pasos para la recuperacion de la contarseña
-            send_recover_password(user_data['name'], user_data['email'])
+            send_recover_password(user_data['name_customer'], user_data['email_customer'])
 
         return redirect(url_for('auth.login'))  # Redirige de nuevo al login después de enviar el correo
     return render_template('recover_password.html')
@@ -53,7 +52,7 @@ def reset_password(token):
             hashed_password = generate_password_hash(new_password)
 
             # Actualiza la contraseña del usuario en la tabla 'cliente' de la base de datos Supabase, utilizando su email.
-            response = supabase.table('Customer').update({"password": hashed_password}).eq("email", email).execute()
+            response = supabase.table('Customer').update({"password_customer": hashed_password}).eq("email_customer", email).execute()
 
             # Verifica si la actualización fue exitosa.
             if response.data:  
