@@ -21,6 +21,7 @@ body {
     background-color: #f7e8e0; /* Fondo alterno beige claro */
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-top: 80px; /* Aumento del margen superior para mover el calendario hacia abajo */
 }
 
 .calendar .header {
@@ -126,21 +127,114 @@ body {
     background-color: #d88c8c; /* Hover del botón rosa palo */
 }
 
+/* Estilo para la barra de navegación fija */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que la barra esté sobre otros elementos */
+    background-color: rgba(239, 233, 206, 1); /* Fondo de la barra */
+    padding: 5px 0; /* Reducido el padding para hacer la barra más pequeña */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para la barra */
+}
+
+/* Estilos del menú de navegación */
 nav {
-    background-color: rgba(239, 233, 206, 0.50); 
-    padding: 10px 20px;
-    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 70px; /* Reducido la altura del contenedor de navegación */
 }
 
-.credits a {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 14px;
-    color: #aaa;
+.logo img {
+    width: 80px; /* Reducido el tamaño del logo */
 }
 
-.credits span {
-    color: #f09c99; /* Enlace rosa suave */
+nav ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 20px; /* Reducido el tamaño de los enlaces */
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.highlight {
+    color: #ff9800;
+}
+
+/* Estilo del perfil del cliente en el menú */
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.client-image {
+    width: 40px; /* Reducido el tamaño de la imagen del cliente */
+    height: 40px;
+    border-radius: 50%;
+}
+
+.client-name {
+    font-size: 16px; /* Reducido el tamaño del nombre del cliente */
+    color: #333333;
+}
+
+/* Margen superior para evitar superposición del contenido con la barra fija */
+main {
+    margin-top: 90px; /* Ajustado el margen superior para que se ajuste a la nueva altura de la barra */
+    width: 100%;
+    padding: 20px;
+}
+
+/* Estilos del catálogo */
+.catalog-view {
+    padding: 50px;
+    text-align: center;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.service-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.service-item h3 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.service-item p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.service-item .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
 }

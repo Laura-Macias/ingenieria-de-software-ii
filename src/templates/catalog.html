@@ -14,7 +14,12 @@
            </div>
            <ul class="nav-links" id="navLinks">
                <li><a href="{{ url_for('home_index.home_index') }}">Home</a></li>
+               <li><a href="{{ url_for('calendar.calendar') }}">calendar</a></li>
+
+               <li><a href="#catalog" class="highlight">Catálogo</a></li>
+
            </ul>
+           
 
            <!-- Botones de Agendar y Carrito -->
            <div class="header-buttons">
@@ -22,8 +27,6 @@
             <button id="cartButton" onclick="toggleCart()">
                 Carrito (<span id="cartCount">0</span>)
             </button>
-            <!-- Botón de Agendar -->
-            <a id="scheduleButton" href="{{ url_for('calendar.calendar') }}" class="select-button">Agendar</a>
             </div>
             <div class="profile-section">
                <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
@@ -51,7 +54,7 @@
                     <span class="price">${{ "{:,.0f}".format(servicios.price) }}</span>
                     <!-- Botón con data attribute para identificar el servicio -->
                     <button class="select-button" 
-                        data-service-name="{{ servicios.service_name }}"onclick="addToCart('{{ servicios.service_name }}', {{ servicios.price }})"> Seleccionar </button>
+                        data-service-name="{{ servicios.service_name }}"onclick="addToCart('{{ servicios.service_name }}', {{ servicios.price }})"> Agendar </button>
                 </div>
                 {% endfor %}
             </div>
