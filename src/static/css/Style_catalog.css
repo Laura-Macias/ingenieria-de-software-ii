@@ -195,26 +195,28 @@ main {
     padding: 5px 0;
     border-bottom: 1px solid #ccc;
 }
-
+#cartDetails button a {
+    text-decoration: none;
+    color: white; /* O el color que prefieras */
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #ff9800; /* Asegúrate de que sea visible */
+    border-radius: 5px;
+}
 #totalPrice {
     font-weight: bold;
 }
 
-/* Footer */
+/* footer */
 footer {
-    background-color: rgba(239, 233, 206, 1);
-    color: #333333;
-    padding: 20px;
-    text-align: center;
-    font-size: 14px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
 }
 
-footer p {
-    margin: 0;
-}
 
 /* Responsive */
 @media (max-width: 1105px) {

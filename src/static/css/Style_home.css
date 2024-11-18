@@ -293,13 +293,13 @@ main {
     border-radius: 10px;
 }
 
-/* Footer */
+/* footer */
 footer {
-    text-align: center;
-    padding: 10px;
-    color: rgba(239, 233, 206, 1);
-    color: #333;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
 }
+

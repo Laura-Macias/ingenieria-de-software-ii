@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="../static/css/carrito_style.css">
+    
+</head>
+<body>
+    <div class="carrito">
+    
+        <div class="encabezado">
+            <img src="../static/img/logo tsume kirei.png" alt="logo">
+            <h1>Mi Carrito</h1>
+        </div>
+
+        <div class="carrito-vacio">
+            <p>Carrito vacío</p>
+            <button onclick="alert('Redirigiendo a la agenda de citas...')">Agenda tu cita</button>
+        </div>
+    
+        <footer>
+            <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
+        </footer>
+
+        
+    <script>
+        // llenado para mostrar la simulación del carrito vacio (esto se borra)
+        const carritoVacio = document.querySelector('.carrito-vacio');
+        
+        // Cambia este valor para probar las diferentes fases
+        const hayProductos = false; //Aqui este true es para cambiar de vistas, dejarlo en false
+
+        if (hayProductos) {
+            carritoVacio.style.display = 'none';
+            carritoLleno.style.display = 'block';
+        } else {
+            carritoVacio.style.display = 'block';
+            carritoLleno.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
