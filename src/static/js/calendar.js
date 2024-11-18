@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { 
     const monthElement = document.querySelector(".month");
     const daysContainer = document.querySelector(".days");
     const prevButton = document.querySelector(".prev-btn");
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentMonth = date.getMonth();
     let currentYear = date.getFullYear();
 
+    // Función para renderizar el calendario
     function renderCalendar() {
         daysContainer.innerHTML = "";
         monthElement.textContent = `${months[currentMonth]} ${currentYear}`;
@@ -20,25 +21,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const firstDay = new Date(currentYear, currentMonth, 1).getDay();
         const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
 
+        // Renderizar los días vacíos antes del primer día del mes
         for (let i = 0; i < firstDay; i++) {
             const emptyDay = document.createElement("div");
             emptyDay.classList.add("day", "empty");
             daysContainer.appendChild(emptyDay);
         }
 
+        // Renderizar los días del mes
         for (let day = 1; day <= lastDay; day++) {
             const dayElement = document.createElement("div");
             dayElement.classList.add("day");
             dayElement.textContent = day;
 
-            if (
-                day === date.getDate() &&
-                currentMonth === date.getMonth() &&
-                currentYear === date.getFullYear()
-            ) {
+            // Marcar el día actual
+            if (day === date.getDate() && currentMonth === date.getMonth() && currentYear === date.getFullYear()) {
                 dayElement.classList.add("today");
             }
 
+            // Al hacer clic en un día, mostrar el iframe
             dayElement.addEventListener("click", () => {
                 document.getElementById('form-container').style.display = 'block'; 
             });
@@ -73,4 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     renderCalendar();
+
+    window.addEventListener("message", function(event) {
+        if (event.origin !== window.location.origin) {
+            return;
+        }
+
+        if (event.data === "formSubmitted") {
+            document.getElementById("form-container").style.display = "none";
+
+            window.location.href = "/catalog";
+        }
+    });
 });

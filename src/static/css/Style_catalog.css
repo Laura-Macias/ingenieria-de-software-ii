@@ -12,6 +12,7 @@ body {
     background-color: beige;
     background-size: cover;
     background-position: center;
+    transition: background-color 0.5s ease;
 }
 
 /* Estilos del header */
@@ -46,19 +47,12 @@ nav ul li a {
     text-decoration: none;
     color: #333333;
     font-size: 25px;
+    transition: color 0.3s ease;
 }
 
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.bar {
-    height: 3px;
-    width: 25px;
-    background-color: #333;
-    margin: 4px 0;
+nav ul li a:hover,
+nav ul li a.highlight {
+    color: #ff9800;
 }
 
 /* Estilo del perfil del cliente en el menú */
@@ -83,38 +77,6 @@ nav ul li a {
 /* Margen superior para evitar superposición del contenido con el menú */
 main {
     margin-top: 120px;
-}
-
-/* Responsive */
-@media (max-width: 1105px) {
-    main {
-        margin-top: 140px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        position: absolute;
-        top: 100px;
-        right: 0;
-        width: 100%;
-        background-color: rgba(239, 233, 206, 1);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease-in-out;
-    }
-
-    nav ul li {
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    nav ul.active {
-        max-height: 300px;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
 }
 
 /* Estilos del catálogo */
@@ -183,26 +145,7 @@ main {
     transform: scale(1);
 }
 
-
-/* Estilo del botón de Agendar */
-#scheduleButton {
-    background-color: #4CAF50; /* Verde */
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-
-#scheduleButton:hover {
-    background-color: #45a049; /* Color más oscuro al pasar el ratón */
-}
-
-/* Estilos de los botones en el header */
+/* Estilo de los botones en el header */
 .header-buttons button, #scheduleButton {
     margin-right: 20px; /* Separar los botones entre sí */
     margin-top: 10px;
@@ -213,38 +156,24 @@ main {
     gap: 20px; /* Asegurarse de que haya espacio entre los botones */
 }
 
+/* Estilo para el botón de carrito igual que los enlaces del menú */
 #cartButton {
-    background-color: #ff9800;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 25px;      /* Igual que los enlaces */
+    padding: 0;           /* Sin padding extra */
+    color: inherit;       /* Hereda el color del texto */
+    background: none;     /* Sin fondo */
+    border: none;         /* Sin borde */
+    cursor: pointer;     /* Cursor tipo mano */
+    text-align: center;   /* Alineación centrada */
+    transition: color 0.3s ease; /* Transición suave en color */
 }
 
+/* Hover para el carrito igual que en los enlaces del menú */
 #cartButton:hover {
-    background-color: #e68a00; /* Color más oscuro al pasar el ratón */
+    color: #e68a00;  /* Cambia a color de hover */
 }
-
 
 /* Estilos para el carrito */
-#cartButton {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-#cartButton:hover {
-    background-color: #45a049;
-}
-
 #cartDetails {
     background-color: white;
     padding: 20px;
@@ -271,7 +200,7 @@ main {
     font-weight: bold;
 }
 
-/* Estilo del footer */
+/* Footer */
 footer {
     background-color: rgba(239, 233, 206, 1);
     color: #333333;
@@ -285,4 +214,36 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1105px) {
+    main {
+        margin-top: 140px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 100%;
+        background-color: rgba(239, 233, 206, 1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+
+    nav ul li {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    nav ul.active {
+        max-height: 300px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
 }

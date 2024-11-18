@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Reserva - Tsume Kirei</title>
-    <link rel="stylesheet" href="../static/css/style_reservation.css"> <!-- CSS para el estilo del formulario -->
+    <link rel="stylesheet" href="../static/css/style_reservation.css">
 </head>
 <body>
    
     <main>
         <div class="reservation-form-container">
             <h2>Formulario de Reserva</h2>
-            <form id="reservationForm" action="{{ url_for('pay.pay') }}" method="POST">
+            <form id="reservationForm" action="{{ url_for('catalog.catalog') }}" method="POST">
                 <div class="input-box">
                     <label for="esthetician">Esteticista:</label>
                     <select id="esthetician" name="esthetician" required>
                         <option value="" disabled selected>Seleccione un esteticista</option>
                         {% for staff in staff %}
-                            <option value="esthetician1">{{ staff.name }} {{ staff.last_name }}</option>
+                            <option value="{{ staff.id }}">{{ staff.name }} {{ staff.last_name }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                
                 
                 <div class="input-box">
                     <label for="time">Hora:</label>
@@ -34,5 +33,16 @@
         </div>
     </main>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("reservationForm");
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+                window.parent.postMessage("formSubmitted", "*");
+
+            });
+        });
+    </script>
 </body>
 </html>
