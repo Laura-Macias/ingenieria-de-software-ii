@@ -53,8 +53,9 @@
                     <p>{{ servicios.description }}</p>
                     <span class="price">${{ "{:,.0f}".format(servicios.price) }}</span>
                     <!-- Botón con data attribute para identificar el servicio -->
-                    <button class="select-button" 
-                        data-service-name="{{ servicios.service_name }}"onclick="addToCart('{{ servicios.service_name }}', {{ servicios.price }})"> Agendar </button>
+                    <a href="{{ url_for('calendar.calendar', service_id = servicios.id_catalog) }}" class="select-button">
+                        Agendar
+                    </a>
                 </div>
                 {% endfor %}
             </div>
@@ -66,7 +67,7 @@
         <h3>Carrito</h3>
         <ul id="cartItems"></ul>
         <p>Total: $<span id="totalPrice">0</span></p>
-        <button><a href="{{ url_for('carrito_lleno.carrito_lleno') }}">detalles</a></button>
+        <button><a href="{{ url_for('detalle.detalle_lleno') }}">detalles</a></button>
     </div>
 
    <footer>

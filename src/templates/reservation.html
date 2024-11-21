@@ -11,13 +11,16 @@
     <main>
         <div class="reservation-form-container">
             <h2>Formulario de Reserva</h2>
-            <form id="reservationForm" action="{{ url_for('catalog.catalog') }}" method="POST">
+            <form id="reservationForm" action="{{ url_for('reservation.add_reservation_to_detail') }}" method="POST">
+                <input type="hidden" id="service_id" name="service_id" value="{{ service_id }}">
+                <input type="hidden" id="id_customer" name="id_customer" value="{{ current_user.id_customer }}">
+                
                 <div class="input-box">
                     <label for="esthetician">Esteticista:</label>
                     <select id="esthetician" name="esthetician" required>
                         <option value="" disabled selected>Seleccione un esteticista</option>
                         {% for staff in staff %}
-                            <option value="{{ staff.id }}">{{ staff.name }} {{ staff.last_name }}</option>
+                            <option value="{{ staff.id_staff }}">{{ staff.name }} {{ staff.last_name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -26,23 +29,11 @@
                     <label for="time">Hora:</label>
                     <input type="time" id="time" name="time" required>
                 </div>
-                <input type="hidden" id="services" name="services">
                 
                 <button type="submit" class="btn">Confirmar</button>
             </form>
         </div>
     </main>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const form = document.getElementById("reservationForm");
-
-            form.addEventListener("submit", function(event) {
-                event.preventDefault();
-                window.parent.postMessage("formSubmitted", "*");
-
-            });
-        });
-    </script>
+    
 </body>
 </html>
