@@ -56,3 +56,12 @@ function toggleCart() {
     let cartDetails = document.getElementById("cartDetails");
     cartDetails.style.display = cartDetails.style.display === 'none' ? 'block' : 'none';
 }
+
+function toggleCart() {
+    const cart = document.getElementById("cartDetails");
+    if (cart.style.display === "none" || cart.style.display === "") {
+        cart.style.display = "block";
+    } else {
+        cart.style.display = "none";
+    }
+}

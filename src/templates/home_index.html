@@ -33,12 +33,15 @@
             <div class="catalog-header-box">
                 <div class="catalog-header">
                     <h2>Catálogo</h2>
-                    <button class="btn-see-more">Ver más</button>
+                    <li><a href="{{ url_for('catalog.catalog') }}"><button class="btn-see-more">Ver más</button></a></li>
                 </div>
                 
         </section>
         <section>
             <div class="carousel-container">
+
+                 <div class="carousel-background" id="carouselBackground"></div>
+
                 <div class="carousel">
                     <div class="carousel-images">
                         <img src="/static/img/imagen2.jpg" alt="Imagen 1">
@@ -61,7 +64,6 @@
             <div class="employees-header-box">
                 <div class="employees-header">
                     <h2>Empleados</h2>
-                    <button class="btn-more-info">Más información</button>
                 </div>
             </div>
             <div class="grid">
@@ -97,7 +99,7 @@
        <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
    </footer>
 
-   <script src="/src/js/menu.js"></script>
-   <script src="/src/js/photos.js"></script>
+   <script src="../static/js/menu.js"></script>
+   <script src="../static/js/photos.js"></script>
 </body>
 </html>
