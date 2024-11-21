@@ -7,9 +7,31 @@
     <link rel="stylesheet" href="../static/css/carrito_style.css">
     
 </head>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="highlight">Home</a></li>
+            <li><a href="{{ url_for('catalog.catalog') }}">Catálogo</a></li>
+        </ul>
+        <div class="profile-section">
+            <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
+            <span class="client-name">{{ current_user.name }} {{ current_user.last_name }}</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+</header>
+
 <body>
     <div class="carrito">
-    
+    <main>
         <div class="encabezado">
             <img src="../static/img/logo tsume kirei.png" alt="logo">
             <h1>Mi Carrito</h1>
@@ -19,26 +41,18 @@
             <p>Carrito vacío</p>
             <button onclick="alert('Redirigiendo a la agenda de citas...')">Agenda tu cita</button>
         </div>
+    </main>
     
         <footer>
             <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
         </footer>
-
         
-    <script>
-        // llenado para mostrar la simulación del carrito vacio (esto se borra)
-        const carritoVacio = document.querySelector('.carrito-vacio');
         
-        // Cambia este valor para probar las diferentes fases
-        const hayProductos = false; //Aqui este true es para cambiar de vistas, dejarlo en false
-
-        if (hayProductos) {
-            carritoVacio.style.display = 'none';
-            carritoLleno.style.display = 'block';
-        } else {
-            carritoVacio.style.display = 'block';
-            carritoLleno.style.display = 'none';
-        }
-    </script>
+        <script src="../static/js/menu.js"></script>
+        <script src="../static/js/carrito_vacio.js"></script>
+        
 </body>
+
+
+
 </html>
