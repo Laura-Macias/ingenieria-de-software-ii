@@ -40,13 +40,16 @@ def add_reservation_to_detail():
         esthetician = request.form.get('esthetician')
         time = request.form.get('time')
         id_customer = request.form.get('id_customer')
-        print("Datos recibidos:", service_id, esthetician, time, id_customer)
+        selected_date = request.form.get('selected_date')
+
+        print("Datos recibidos:", service_id, esthetician, time, id_customer, selected_date)
         
         supabase.table('Detail').insert({
                 'id_customer': id_customer,
                 'id_service': service_id,
                 'id_staff': esthetician,
-                'time': time
+                'time': time,
+                'date': selected_date
             }).execute()
         
         return redirect(url_for('catalog.catalog'))

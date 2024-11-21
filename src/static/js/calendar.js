@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let date = new Date();
     let currentMonth = date.getMonth();
     let currentYear = date.getFullYear();
+    let selectedDay = null;
 
     // Función para renderizar el calendario
     function renderCalendar() {
@@ -28,21 +29,38 @@ document.addEventListener("DOMContentLoaded", () => {
             daysContainer.appendChild(emptyDay);
         }
 
-        // Renderizar los días del mes
-        for (let day = 1; day <= lastDay; day++) {
-            const dayElement = document.createElement("div");
-            dayElement.classList.add("day");
-            dayElement.textContent = day;
+        for(let day = 1 ; day <= lastDay ; day ++){
 
-            // Marcar el día actual
+            const dayElement = document.createElement("div");
+            dayElement.classList.add('day');
+            dayElement.textContent = day ;
+
             if (day === date.getDate() && currentMonth === date.getMonth() && currentYear === date.getFullYear()) {
                 dayElement.classList.add("today");
             }
 
-            // Al hacer clic en un día, mostrar el iframe
             dayElement.addEventListener("click", () => {
-                document.getElementById('form-container').style.display = 'block'; 
+                if (selectedDay) {
+                    selectedDay.classList.remove("selected");
+                }
+
+                selectedDay = dayElement;
+                dayElement.classList.add("selected");
+
+                // Obtener la fecha seleccionada
+                const selectedDate = new Date(currentYear, currentMonth, day);
+
+                // Mostrar el iframe con el formulario
+                document.getElementById('form-container').style.display = 'block';
+
+                // Enviar la fecha seleccionada al iframe
+                const iframe = document.getElementById('reservation-iframe');
+                iframe.contentWindow.postMessage(
+                    { action: "setDate", date: selectedDate.toISOString().split('T')[0] },
+                    "*"
+                );
             });
+
 
             daysContainer.appendChild(dayElement);
         }

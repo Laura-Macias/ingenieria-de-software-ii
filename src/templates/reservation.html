@@ -14,6 +14,7 @@
             <form id="reservationForm" action="{{ url_for('reservation.add_reservation_to_detail') }}" method="POST">
                 <input type="hidden" id="service_id" name="service_id" value="{{ service_id }}">
                 <input type="hidden" id="id_customer" name="id_customer" value="{{ current_user.id_customer }}">
+                <input type="hidden" id="selected_date" name="selected_date" value="">
                 
                 <div class="input-box">
                     <label for="esthetician">Esteticista:</label>
@@ -44,6 +45,17 @@
                 window.parent.postMessage("formSubmitted", "*");
                 // Ahora enviar el formulario (después de la comunicación)
                 form.submit();
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            window.addEventListener("message", function(event) {
+                if (event.origin !== window.location.origin) return;
+
+                if (event.data.action === "setDate") {
+                    const dateInput = document.getElementById("selected_date");
+                    dateInput.value = event.data.date;
+                }
             });
         });
     </script>
