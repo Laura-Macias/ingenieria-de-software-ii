@@ -34,6 +34,18 @@
             </form>
         </div>
     </main>
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("reservationForm");
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();  // Evitar el envío predeterminado del formulario
+                // Aquí puedes agregar una validación adicional del formulario si es necesario
+                // Enviar un mensaje al contenedor principal indicando que el formulario fue enviado
+                window.parent.postMessage("formSubmitted", "*");
+                // Ahora enviar el formulario (después de la comunicación)
+                form.submit();
+            });
+        });
+    </script>
 </body>
 </html>
