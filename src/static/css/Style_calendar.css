@@ -33,6 +33,16 @@ body {
     border-bottom: 2px solid #ccc;
 }
 
+
+.calendar .day.selected {
+    background-color: #ffcccb; /* Color de fondo para el día seleccionado */
+    color: #000; /* Color del texto */
+    border: 2px solid #f7c4c4; /* Borde */
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+
 .calendar .header .month {
     font-size: 25px;
     font-weight: 600;
@@ -102,10 +112,7 @@ body {
     transform: scale(1.05);
 }
 
-.days .day.today {
-    color: #fffaf0; /* Texto en blanco crema */
-    background-color: #f09c99; /* Fondo rosa suave */
-}
+
 
 .days .day.next,
 .days .day.prev {
@@ -238,3 +245,4 @@ main {
     font-weight: bold;
     color: #333333;
 }
+

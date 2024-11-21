@@ -14,20 +14,20 @@
            </div>
            <ul class="nav-links" id="navLinks">
                <li><a href="{{ url_for('home_index.home_index') }}">Home</a></li>
-               <li><a href="{{ url_for('calendar.calendar') }}">calendar</a></li>
+               <li><a href="{{ url_for('calendar.calendar') }}">Calendar</a></li>
 
                <li><a href="#catalog" class="highlight">Catálogo</a></li>
 
            </ul>
            
 
-           <!-- Botones de Agendar y Carrito -->
+           
            <div class="header-buttons">
-            <!-- Botón de Carrito -->
-            <button id="cartButton" onclick="toggleCart()">
-                Carrito (<span id="cartCount">0</span>)
-            </button>
+                <button id="cartButton" onclick="toggleCart()">
+                    Detalle (<span id="cartCount">0</span>)
+                </button>
             </div>
+
             <div class="profile-section">
                <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
                <span class="client-name">{{ current_user.name }} {{ current_user.last_name }}</span>
@@ -62,9 +62,11 @@
        </section>
    </main>
 
+
+
    <!-- Carrito (invisible inicialmente) -->
    <div id="cartDetails" class="cart-details" style="display: none;">
-        <h3>Carrito</h3>
+        <h3>Detalle</h3>
         <ul id="cartItems"></ul>
         <p>Total: $<span id="totalPrice">0</span></p>
         <button><a href="{{ url_for('detalle.detalle_lleno') }}">detalles</a></button>
