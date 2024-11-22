@@ -6,21 +6,12 @@
 
 body {
     display: flex;
-    align-items: center;
-    height: 100vh;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Asegura que el cuerpo ocupe toda la altura de la ventana */
     padding: 10px;
     background-color: #fffaf0; /* Fondo principal blanco crema */
     font-family: Arial, sans-serif; /* Fuente general */
-}
-
-.logo img {
-    width: 30%;
-    transition: transform 0.5s;
-    margin-bottom: 165%;
-}
-
-.logo img:hover {
-    transform: scale(1.1);
 }
 
 section {
@@ -30,6 +21,20 @@ section {
     width: 90%; /* Ancho responsivo */
     max-width: 400px; /* Ancho máximo */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea todo el contenido del formulario en el centro */
+}
+
+.logo img {
+    width: 120px; /* Mismo tamaño que en la página principal */
+    transition: transform 0.5s;
+    margin-top: 90px; /* Ajusta este valor para bajar la imagen */
+    margin-bottom: 0px; /* Espacio entre el logo y el formulario */
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* Efecto hover para el logo */
 }
 
 h2 {
@@ -41,6 +46,7 @@ h2 {
 form {
     display: flex;
     flex-direction: column; /* Apilar los elementos verticalmente */
+    width: 100%;
 }
 
 label {
@@ -52,7 +58,7 @@ input[type="email"],
 input[type="password"],
 input[type="text"] {
     height: 40px;
-    width: 100%;
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
     margin-bottom: 15px; /* Espacio entre los inputs */
     padding: 0 10px; /* Espacio interno */
     border-radius: 10px; /* Bordes redondeados */
@@ -94,4 +100,37 @@ p a {
 
 p a:hover {
     text-decoration: underline; /* Subrayar al pasar el cursor */
+}
+
+.notification {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;  /* Color verde para éxito */
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+}
+
+.notification p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.notification button {
+    margin-top: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.notification button:hover {
+    background-color: #0056b3;
 }

@@ -23,6 +23,9 @@ signupForm.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             alert('Registro exitoso!');
+            setTimeout(function() {
+                window.location.href = "{{ url_for('auth.login') }}"; // Redirige a la página de login después de 3 segundos
+            }, 10000);
         } else {
             alert('Error en el registro:', result.message);
         }
