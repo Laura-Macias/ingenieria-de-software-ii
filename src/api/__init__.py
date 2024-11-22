@@ -11,6 +11,7 @@ from .catalog import catalog_bp
 from .calendar import calendar_bp
 from .pay import pay_bp
 from .detalle import detalle_bp
+from .user import user_bp
 from config import Config
 
 def create_app():
@@ -45,5 +46,7 @@ def create_app():
     app.register_blueprint(calendar_bp)
     app.register_blueprint(pay_bp)
     app.register_blueprint(detalle_bp)
+    app.register_blueprint(user_bp)
+
 
     return app

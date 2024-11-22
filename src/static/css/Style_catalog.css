@@ -131,7 +131,7 @@ nav ul {
 }
 
 
-/* Estilo del perfil del cliente en el menú */
+/* Perfil del cliente en el menú */
 .profile-section {
     display: flex;
     align-items: center;
@@ -148,6 +148,56 @@ nav ul {
 .client-name {
     font-size: 18px;
     color: #333333;
+}
+
+.profile-section {
+    position: relative;
+}
+
+.profile-menu {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 200px;
+    z-index: 10;
+    padding: 10px;
+}
+
+.profile-menu .profile-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.profile-menu-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.profile-menu-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-menu-actions button:hover {
+    background-color: #f0f0f0;
+}
+
+.profile-menu-actions button:first-child {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.profile-menu-actions button:last-child {
+    background-color:#f09c99;
+    color: rgb(0, 0, 0);
 }
 
 /* Margen superior para evitar superposición del contenido con el menú */

@@ -39,20 +39,16 @@ function toggleEditMode() {
 
 // Mostrar el popup de cierre de sesión
 function logout() {
-    // Muestra el popup de cierre de sesión
     const logoutPopup = document.getElementById('logoutPopup');
-    logoutPopup.style.display = 'flex'; // Muestra el popup
+    logoutPopup.style.display = 'flex'; // Cambiar a 'flex' para mostrar el popup
 }
 
-// Confirmar el cierre de sesión
+
 function confirmLogout() {
-    // Redirige a la página de cierre de sesión
     window.location.href = "{{ url_for('auth.logout') }}";
 }
 
-// Cancelar el cierre de sesión
 function cancelLogout() {
-    // Oculta el popup
     const logoutPopup = document.getElementById('logoutPopup');
-    logoutPopup.style.display = 'none';
+    logoutPopup.style.display = 'none'; // Ocultar el popup
 }

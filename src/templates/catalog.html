@@ -19,9 +19,20 @@
                <li><a href="#catalog" class="highlight">Catálogo</a></li>
                 <li><a href="{{ url_for('detalle.detalle_vacio') }}">Detalle</a></li>
            </ul>
-            <div class="profile-section">
-               <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
-               <span class="client-name">{{ current_user.name }} {{ current_user.last_name }}</span>
+           <div class="profile-section">
+            <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image" onclick="toggleProfileMenu()">
+            <span class="client-name">{{ current_user.name }} {{ current_user.last_name }}</span>
+            <!-- Menú desplegable -->
+            <div class="profile-menu" id="profileMenu">
+                <div class="profile-info">
+                    <p><strong>Nombre:</strong> {{ current_user.name }}</p>
+                    <p><strong>Apellido:</strong> {{ current_user.last_name }}</p>
+                    <p><strong>Email:</strong> {{ current_user.email }}</p>
+                </div>
+                <div class="profile-menu-actions">
+                    <a href="{{ url_for('user.user') }}"><button>informacion</button></a>
+                    <button onclick="logout()">Salir</button>
+                </div>
             </div>
            <div class="menu-toggle" id="menuToggle">
                <div class="bar"></div>
@@ -58,6 +69,7 @@
    </footer>
 
    <script src="../static/js/menu.js"></script>
+   <script src="../static/js/informacion_usuario.js"></script>
    <script src="{{ url_for('static', filename='js/catalog.js') }}"></script>
 </body>
 </html>

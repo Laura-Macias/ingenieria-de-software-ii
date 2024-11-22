@@ -39,7 +39,7 @@
                     <p><strong>Dirección:</strong> {{ current_user.address }}</p>
                 </div>
 
-                <form id="userDetailsEdit" method="POST" action="{{ url_for('user.update') }}" style="display: none;">
+                <form id="userDetailsEdit" method="POST" action="{{ url_for('user.user') }}" style="display: none;">
                     <p><strong>Nombre:</strong> <input type="text" name="name" value="{{ current_user.name }}" required></p>
                     <p><strong>Apellido:</strong> <input type="text" name="last_name" value="{{ current_user.last_name }}" required></p>
                     <p><strong>Correo Electrónico:</strong> <input type="email" name="email" value="{{ current_user.email }}" required></p>

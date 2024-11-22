@@ -138,8 +138,8 @@ nav ul li a.highlight {
 }
 
 .profile-menu-actions button:last-child {
-    background-color: #FF5252;
-    color: white;
+    background-color: #f09c99;
+    color: rgb(0, 0, 0);
 }
 
 

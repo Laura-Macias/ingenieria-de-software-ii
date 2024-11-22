@@ -27,8 +27,8 @@
                     <p><strong>Email:</strong> {{ current_user.email }}</p>
                 </div>
                 <div class="profile-menu-actions">
-                    <li><a href="{{ url_for('user.user') }}">Catálogo</a></li>
-                    <button onclick="logout()">Salir</button>
+                    <a href="{{ url_for('user.user') }}"><button>informacion</button></a>
+                    <a class="btn-logout" href="{{ url_for('auth.logout') }}"><button class="btn-logout">salir</button></a>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="catalog-header-box">
                 <div class="catalog-header">
                     <h2>Catálogo</h2>
-                    <li><a href="{{ url_for('catalog.catalog') }}"><button class="btn-see-more">Ver más</button></a></li>
+                    <a href="{{ url_for('catalog.catalog') }}"><button class="btn-see-more">Ver más</button></a>
                 </div>
                 
         </section>
