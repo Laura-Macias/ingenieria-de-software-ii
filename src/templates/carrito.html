@@ -194,6 +194,7 @@
                                 <th>Servicio</th>
                                 <th>Fecha</th>
                                 <th>Hora</th>
+                                <th>Valor</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -207,6 +208,7 @@
                                             <td>{{ items.service_name }}</td>
                                             <td>{{ servicios.date }}</td>
                                             <td>{{ servicios.time }}</td>
+                                            <td>{{ items.price }}</td>
                                             <td>
                                                 <form action="{{ url_for('detalle.eliminar_detalle') }}" method="POST">
                                                     <input type="hidden" name="id_detail" value="{{ servicios.id_detail }}">
