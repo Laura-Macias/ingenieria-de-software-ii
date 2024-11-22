@@ -30,9 +30,10 @@
                 </div>
                 <div class="profile-menu-actions">
                     <a href="{{ url_for('user.user') }}"><button>informacion</button></a>
-                    <button onclick="logout()">Salir</button>
+                    <a class="btn-logout" href="{{ url_for('auth.logout') }}"><button class="btn-logout">salir</button></a>
                 </div>
             </div>
+        </div>
            <div class="menu-toggle" id="menuToggle">
                <div class="bar"></div>
                <div class="bar"></div>
