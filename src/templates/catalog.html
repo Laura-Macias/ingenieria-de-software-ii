@@ -19,11 +19,6 @@
                <li><a href="#catalog" class="highlight">Catálogo</a></li>
                 <li><a href="{{ url_for('detalle.detalle_lleno') }}">Detalle</a></li>
            </ul>
-           
-
-           
-                
-
             <div class="profile-section">
                <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
                <span class="client-name">{{ current_user.name }} {{ current_user.last_name }}</span>
@@ -62,7 +57,7 @@
        <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
    </footer>
 
-   <script src="/src/js/menu.js"></script>
+   <script src="../static/js/menu.js"></script>
    <script src="{{ url_for('static', filename='js/catalog.js') }}"></script>
 </body>
 </html>

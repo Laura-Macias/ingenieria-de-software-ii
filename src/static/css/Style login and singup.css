@@ -6,12 +6,21 @@
 
 body {
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 100vh;
     padding: 10px;
     background-color: #fffaf0; /* Fondo principal blanco crema */
     font-family: Arial, sans-serif; /* Fuente general */
+}
+
+.logo img {
+    width: 30%;
+    transition: transform 0.5s;
+    margin-bottom: 165%;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
 }
 
 section {

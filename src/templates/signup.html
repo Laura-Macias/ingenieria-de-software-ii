@@ -6,11 +6,22 @@
      <!-- Configuración para que la vista se adapte a diferentes dispositivos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <!-- Enlace a la hoja de estilos CSS, usando Flask para generar la URL -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/Style login and singup.css') }}">
+    <link rel="stylesheet" href="../static/css/Style login and singup.css">
 
     <title>Registro</title><!-- Título de la pagina -->
 </head>
 <body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="{{ url_for('home_index.home_index') }}" class="highlight">Home</a></li>
+            </ul>
+        </nav>
+    </header>
     <section>
         <h2>Registro</h2><!-- Título del formulario de registro -->
         <!-- Bloque para mostrar notificaciones -->

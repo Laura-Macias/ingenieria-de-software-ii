@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Usuario - Tsume Kirei</title>
+    <link rel="stylesheet" href="../static/css/Style_user.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="{{ url_for('home_index.home_index') }}" class="highlight">Home</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="user-info-section">
+            <h1>Información del Usuario</h1>
+            <div class="user-info-box">
+                <div class="user-profile-pic">
+                    <img src="../static/img/client_image.jpg" alt="Foto del Usuario">
+                </div>
+
+                <div id="userDetails">
+                    <p><strong>Nombre:</strong> {{ current_user.name }}</p>
+                    <p><strong>Apellido:</strong> {{ current_user.last_name }}</p>
+                    <p><strong>Correo Electrónico:</strong> {{ current_user.email }}</p>
+                    <p><strong>Teléfono:</strong> {{ current_user.phone }}</p>
+                    <p><strong>Dirección:</strong> {{ current_user.address }}</p>
+                </div>
+
+                <form id="userDetailsEdit" method="POST" action="{{ url_for('user.update') }}" style="display: none;">
+                    <p><strong>Nombre:</strong> <input type="text" name="name" value="{{ current_user.name }}" required></p>
+                    <p><strong>Apellido:</strong> <input type="text" name="last_name" value="{{ current_user.last_name }}" required></p>
+                    <p><strong>Correo Electrónico:</strong> <input type="email" name="email" value="{{ current_user.email }}" required></p>
+                    <p><strong>Teléfono:</strong> <input type="text" name="phone" value="{{ current_user.phone }}" required></p>
+                    <p><strong>Dirección:</strong> <input type="text" name="address" value="{{ current_user.address }}" required></p>
+                </form>
+
+            </div>
+            <div class="action-buttons">
+                <button id="editButton" class="btn-edit" onclick="toggleEditMode()">Editar Información</button>
+                <button id="saveButton" class="btn-edit" style="display: none;" onclick="document.getElementById('userDetailsEdit').submit();">Guardar Cambios</button>
+                <button type="button" class="btn-logout" onclick="logout()">Salir</button>
+            </div>
+
+            <!-- Popup de Cierre de Sesión -->
+            <div id="logoutPopup">
+                <div class="popup-message">
+                    <p>¿Seguro que quieres cerrar sesión?</p>
+                    <button onclick="confirmLogout()">Sí, cerrar sesión</button>
+                    <button onclick="cancelLogout()">Cancelar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../static/js/menu.js"></script>
+    <script src="../static/js/informacion_usuario.js"></script>
+</body>
+</html>

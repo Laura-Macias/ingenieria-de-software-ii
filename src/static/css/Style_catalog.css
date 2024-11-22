@@ -55,6 +55,82 @@ nav ul li a.highlight {
     color: #ff9800;
 }
 
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: #333;
+    margin: 4px 0;
+}
+
+.overlay-menu {
+    position: absolute;
+    top: 100px;
+    right: -250px;
+    width: 250px;
+    height: calc(100% - 100px); 
+    background-color: rgba(239, 233, 206, 0.9);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    z-index: 999;
+}
+
+.overlay-menu.active {
+    right: 0;
+}
+
+.overlay-menu ul {
+    list-style: none;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.overlay-menu ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 20px;
+}
+
+nav ul {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 100%;
+        background-color: rgba(239, 233, 206, 1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+    nav ul li {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    nav ul.active {
+        max-height: 300px; 
+    }
+
+    .menu-toggle {
+        display: flex;
+        cursor: pointer;
+    }
+
+}
+
+
 /* Estilo del perfil del cliente en el menú */
 .profile-section {
     display: flex;
