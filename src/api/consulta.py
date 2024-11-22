@@ -60,7 +60,6 @@ def consulta_view():
     Renderiza la vista con la información de los turnos agendados por el cliente actual.
     """
     turnos = obtener_consulta()
-    print(turnos)
 
     # Verificación para depurar los turnos obtenidos
     if turnos:

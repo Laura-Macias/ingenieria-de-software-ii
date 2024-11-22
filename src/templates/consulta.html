@@ -111,24 +111,24 @@
             border-radius: 8px;
         }
         .boton-aceptar {
-    text-align: center;
-    margin-top: 20px;
-}
+            text-align: center;
+            margin-top: 20px;
+        }
 
-.action-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #ff9800;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        .action-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.action-button:hover {
-    background-color: #e68900;
-}
+        .action-button:hover {
+            background-color: #e68900;
+        }
     </style>
 
 </head>
@@ -222,32 +222,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for turno in turnos %}
+                                {% for turno in turnos %}
                                 {% if turno['id_customer_calendar'] == current_user.id_customer %}
-                            <tr>
-                                <!-- Asegúrate de que las claves del diccionario coincidan con las que se están pasando -->
-                                <td>{{ turno['event_date'] }}</td>
-                                <td>{{ turno['service_name'] }}</td>
-                                <td>{{ turno['manicurist_name'] }}</td>
-                                <td>{{ turno['description'] }}</td>
-                            </tr>
-                            {% else %}
-                            <!-- Opcional: Si quieres ver que no haya datos para este cliente -->
-                            <tr>
-                                <td colspan="4">No hay turnos para este cliente</td></tr>
-                            </tr>
-                            {% endif %}
-                        {% endfor %}
-                    </tbody>
+                                <tr>
+                                    <!-- Asegúrate de que las claves del diccionario coincidan con las que se están pasando -->
+                                    <td>{{ turno['event_date'] }}</td>
+                                    <td>{{ turno['service_name'] }}</td>
+                                    <td>{{ turno['manicurist_name'] }}</td>
+                                    <td>{{ turno['description'] }}</td>
+                                </tr>
+                                {% else %}
+                                <!-- Opcional: Si quieres ver que no haya datos para este cliente -->
+                                <tr>
+                                    <td colspan="4">No hay turnos para este cliente</td>
+                                </tr>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
-            <div class="boton-aceptar">
-                <a href="{{ url_for('catalog.catalog') }}">
-                    <button class="action-button">Aceptar</button>
-                </a>
-            </div>
+        
             {% endif %}
-
-          
         </main>
 
         <footer>

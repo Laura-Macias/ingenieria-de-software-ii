@@ -220,8 +220,9 @@
 
                                             </td>
                                             <td>
-                                                <form action="{{ url_for('detalle.actualizar_detalle', id_detail=servicios.id_detail) }}" method="GET">
-                                                    <button type="submit" class="action-button collect-button">Modificar</button>
+                                                <form action="{{ url_for('detalle.actualizar_detalle') }}" method="GET">
+                                                    <input type="hidden" name="id_detail" value="{{ servicios.id_detail }}">
+                                                    <button type="submit" name = "{{ servicios.id_detail }}"class="action-button collect-button">Modificar</button>
                                                 </form>
                                             </td>
                                         </tr>
