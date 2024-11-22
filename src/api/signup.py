@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, flash
+from flask import render_template, Blueprint, request, flash, redirect, url_for
 from config import Config
 from werkzeug.security import generate_password_hash
 from application.sendEmail import send_email_signup
@@ -47,8 +47,11 @@ def signup():
 
         # Si la variable tiene datos se confirma que se gaurdo en la base de datos y se envia un correo de confrimacion
         if response.data:
-            send_email_signup(name, email)         
+            send_email_signup(name, email)
+            flash('¡Registro exitoso! Ahora puedes iniciar sesión.', 'success')
+            return redirect(url_for('auth.login'))         
         else:
             flash("Error al registrar: " + str(response.error))
-
+            return redirect(url_for('signup.signup'))
+    
     return render_template('signup.html')
