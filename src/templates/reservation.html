@@ -32,34 +32,54 @@
                 </div>
                 
                 <button type="submit" class="btn">Confirmar</button>
+                <button type="button" id="payButton" class="btn">Pagar</button>
             </form>
         </div>
     </main>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Manejo del formulario de reserva
             const form = document.getElementById("reservationForm");
-            form.addEventListener("submit", function(event) {
-                event.preventDefault();  // Evitar el envío predeterminado del formulario
-                // Aquí puedes agregar una validación adicional del formulario si es necesario
-                // Enviar un mensaje al contenedor principal indicando que el formulario fue enviado
-                window.parent.postMessage("formSubmitted", "*");
-                // Ahora enviar el formulario (después de la comunicación)
-                form.submit();
-            });
-        });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            window.addEventListener("message", function(event) {
+            if (form) {
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault(); // Evitar el envío predeterminado del formulario
+    
+                    // Aquí puedes agregar validaciones adicionales si es necesario
+    
+                    // Enviar un mensaje al contenedor principal indicando que el formulario fue enviado
+                    window.parent.postMessage("formSubmitted", "*");
+    
+                    // Enviar el formulario después de la comunicación
+                    form.submit();
+                });
+            }
+    
+            // Manejo del botón "Pagar"
+            const payButton = document.getElementById("payButton");
+            if (payButton) {
+                payButton.addEventListener("click", () => {
+                    // Envía un mensaje al contenedor principal para redirigir a la página de pago
+                    window.parent.postMessage({ action: "redirectToPay" }, "*");
+                });
+            }
+    
+            // Manejo de mensajes enviados desde el contenedor principal
+            window.addEventListener("message", function (event) {
                 if (event.origin !== window.location.origin) return;
-
+    
                 if (event.data.action === "setDate") {
                     const dateInput = document.getElementById("selected_date");
-                    dateInput.value = event.data.date;
+                    if (dateInput) {
+                        dateInput.value = event.data.date;
+                    }
                 }
             });
         });
     </script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> fa439e9aa3ebeef64e0e60a23ff97d7271b0b113
     
 </body>
 </html>

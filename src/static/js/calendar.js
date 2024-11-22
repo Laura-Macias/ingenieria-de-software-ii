@@ -93,15 +93,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderCalendar();
 
-    window.addEventListener("message", function(event) {
-        if (event.origin !== window.location.origin) {
-            return;
-        }
+    window.addEventListener("message", function (event) {
+        if (event.origin !== window.location.origin) return;
 
         if (event.data === "formSubmitted") {
             document.getElementById("form-container").style.display = "none";
+            window.location.href = "/catalog"; // Redirige al catálogo después de confirmar
+        }
 
-            window.location.href = "/catalog";
+        if (event.data.action === "redirectToPay") {
+            window.location.href = "/pay"; // Redirige al flujo de pago
         }
     });
 });

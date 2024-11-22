@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="../static/css/carrito_style.css">
+</head>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="highlight">Home</a></li>
+            <li><a href="{{ url_for('catalog.catalog') }}">Catálogo</a></li>
+        </ul>
+        <div class="profile-section">
+            <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image">
+            <span class="client-name">{{ current_user.name }} {{ current_user.last_name }}</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="carrito">
+        <main>
+            <div class="encabezado">
+                <img src="../static/img/logo tsume kirei.png" alt="logo">
+                <h1>Mi Carrito</h1>
+            </div>
+
+            <!-- Tabla con la información de la base de datos -->
+            <div class="table-container">
+                <h2>Detalles del Pedido</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Detalle</th>
+                            <th>ID Servicio</th>
+                            <th>ID Staff Time</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in pedido_detalles %}
+                            <tr>
+                                <td>{{ item.id_detail }}</td>
+                                <td>{{ item.id_service }}</td>
+                                <td>{{ item.id_staff_time }}</td>
+                                <td>{{ item.date }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mensaje si el carrito está vacío -->
+            <div class="carrito-vacio" {% if pedido_detalles|length == 0 %}style="display:block;"{% else %}style="display:none;"{% endif %}>
+                <p>Carrito vacío</p>
+                <button onclick="redirigirACita()">Agenda tu cita</button>
+
+                <script>
+                    function redirigirACita() {
+                        alert('Redirigiendo a la agenda de citas...');
+                        window.location.href = "{{ url_for('catalog.catalog') }}";
+                    }
+                </script>
+            </div>
+
+            <div class="carrito-con-elementos" {% if pedido_detalles|length > 0 %}style="display:block;"{% else %}style="display:none;"{% endif %}>
+                <button id="addMoreServicesButton" onclick="redirigirACatalogo()">Añadir más servicios</button>
+                <button id="payButton" onclick="redirigirAPago()">Pagar</button>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
+        </footer>
+
+        <script src="../static/js/menu.js"></script>
+        <script src="../static/js/carrito_vacio.js"></script>
+    </div>
+
+    <script>
+        function redirigirACatalogo() {
+            window.location.href = "{{ url_for('catalog.catalog') }}";
+        }
+
+        function redirigirAPago() {
+            window.location.href = "{{ url_for('pay.pay') }}";
+        }
+    </script>
+</body>
+</html>

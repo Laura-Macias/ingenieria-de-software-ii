@@ -93,6 +93,11 @@ paymentForm.addEventListener('submit', (event) => {
         setTimeout(() => {
             processingDiv.style.display = 'none';
             confirmationDiv.style.display = 'block';
+
+            setTimeout(() => {
+                window.location.href = redirectUrl;  // Usar la variable redirectUrl
+            }, 2000);
         }, 2000);
     }
+    
 });

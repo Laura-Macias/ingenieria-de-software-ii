@@ -9,7 +9,7 @@ body {
     font-family: 'TIM Merengue', sans-serif;
     line-height: 1.6;
     color: #333333;
-    background-image: url('/Users/Administrator/Desktop/ingenieria-de-software-ii/src/static/img/background\ tsume\ kirei.png');
+    background-image: url('../img/background\ tsume\ kirei.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
