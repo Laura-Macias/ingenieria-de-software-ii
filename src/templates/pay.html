@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pasarela de Pagos</title>
-    <link rel="stylesheet" href="/src/static/css/Style_pay.css"> <!-- Asegúrate de que esta ruta sea correcta -->
+    <link rel="stylesheet" href="../static/css/Style_pay.css"> <!-- Asegúrate de que esta ruta sea correcta -->
 </head>
 <body>
     <div id="payment-form">
@@ -50,7 +50,11 @@
         <h2>¡Pago realizado con éxito!</h2>
         <p>Tu orden ha sido procesada.</p>
     </div>
+    
+    <script>
+        var redirectUrl = "{{ url_for('home_index.home_index') }}";
+    </script>
 
-    <script src="/src/static/js/pay.js"></script> <!-- Asegúrate de que esta ruta sea correcta -->
+    <script src="../static/js/pay.js"></script> <!-- Asegúrate de que esta ruta sea correcta -->
 </body>
 </html>
