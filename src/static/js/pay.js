@@ -85,19 +85,7 @@ document.getElementById('card-expiration').addEventListener('input', function() 
 
 // Validar cuando el formulario se envíe
 paymentForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!submitButton.disabled) {
-        paymentForm.style.display = 'none';
-        processingDiv.style.display = 'block';
-
-        setTimeout(() => {
-            processingDiv.style.display = 'none';
-            confirmationDiv.style.display = 'block';
-
-            setTimeout(() => {
-                window.location.href = redirectUrl;  // Usar la variable redirectUrl
-            }, 2000);
-        }, 2000);
+    if (submitButton.disabled) {
+        event.preventDefault(); // Solo previene el envío si el botón está desactivado
     }
-    
 });

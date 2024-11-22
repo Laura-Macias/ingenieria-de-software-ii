@@ -9,19 +9,19 @@
 <body>
     <div id="payment-form">
         <h2>Selecciona tu método de pago</h2>
-        <form>
+        <form action="{{ url_for('pay.pay') }}" method="POST">
             <div>
                 <input type="radio" name="payment" value="card"> Tarjeta de crédito
                 <!--<input type="radio" name="payment" value="PSE"> PSE-->
             </div>
             <div id="card-details" style="display: none;">
-                <label for="card-holder">Nombre del titular:</label>
+                <label name="card-holder">Nombre del titular:</label>
                 <input type="text" id="card-holder" required>
-                <label for="card-number">Número de tarjeta:</label>
-                <input type="text" id="card-number" pattern="\d{16}" maxlength="16" required placeholder="1234 5678 9012 3456">
-                <label for="card-cvv">CVV:</label> 
+                <label name="card_number">Número de tarjeta:</label>
+                <input type="text" name="card_number" id="card-number" pattern="\d{16}" maxlength="16" required placeholder="1234 5678 9012 3456">
+                <label name="card-cvv">CVV:</label> 
                 <input type="text" id="card-cvv" pattern="\d{3}" maxlength="3" required placeholder="123">
-                <label for="card-expiration">Fecha de expiración (MM/AA):</label>
+                <label name="card-expiration">Fecha de expiración (MM/AA):</label>
                 <input type="text" id="card-expiration" pattern="^(0[1-9]|1[0-2])\/\d{2}$" maxlength="5" required placeholder="MM/AA">
             </div>
            <!---- <div id="PSE" style="display: none;">
@@ -37,7 +37,7 @@
                     <option value="bank5">Banco Popular</option>
                 </select>
             </div> -->
-            <button type="submit" id="submit-button" disabled>Pagar</button>
+            <button type="submit" id="submit-button" >Pagar</button>
         </form>
     </div>
 
@@ -52,13 +52,13 @@
     </div>
     
     <script>
-        var redirectUrl = "{{ url_for('home_index.home_index') }}";
+        var redirectUrl = "{{ url_for('pay.pay') }}";
     </script>
 
 
     
     <script src="/src/static/js/pay.js"></script>
-    <script src="../static/js/pay.js"></script> <!-- Asegúrate de que esta ruta sea correcta -->
+    <script src="../static/js/pay.js"></script> 
 </body>
 
 </html>
