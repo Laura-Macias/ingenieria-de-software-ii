@@ -13,6 +13,8 @@ from .pay import pay_bp
 from .detalle import detalle_bp
 from .user import user_bp
 from config import Config
+from .consulta import consulta_bp
+
 
 def create_app():
     app = Flask(__name__, template_folder='../templates', static_folder='../static')
@@ -47,6 +49,8 @@ def create_app():
     app.register_blueprint(pay_bp)
     app.register_blueprint(detalle_bp)
     app.register_blueprint(user_bp)
+    app.register_blueprint(consulta_bp)
+
 
 
     return app
