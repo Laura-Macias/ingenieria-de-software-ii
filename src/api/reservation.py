@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, session
 from .models.staff import Staff 
 from config import Config
 from flask_login import current_user
@@ -32,10 +32,14 @@ def reservation():
         return render_template('reservation.html', staff=staff, service_id=service_id, current_user=current_user)  # Pasa los manicuristas al template
     else:
         return render_template('reservation.html', staff=[], service_id=service_id, current_user=current_user)  # Renderiza con una lista vacía si no hay datos
-    
+
+'''
 @reservation_bp.route('/add_reservation_to_detail', methods = ['POST'])
 def add_reservation_to_detail():
-    if request.method == 'POST':
+
+        #id_detail = session.get('id_detail_to_update')
+
+        #request.method == 'POST':
         service_id = request.form.get('service_id')  
         esthetician = request.form.get('esthetician')
         time = request.form.get('time')
@@ -53,4 +57,42 @@ def add_reservation_to_detail():
             }).execute()
         
         return redirect(url_for('catalog.catalog'))
-        
+'''
+
+@reservation_bp.route('/add_reservation_to_detail', methods=['POST'])
+def add_reservation_to_detail():
+    service_id = request.form.get('service_id')
+    esthetician = request.form.get('esthetician')
+    time = request.form.get('time')
+    id_customer = request.form.get('id_customer')
+    selected_date = request.form.get('selected_date')
+    
+    # Obtener el id_detail desde la sesión (si existe)
+    id_detail = session.get('id_detail_to_update')
+
+    # Si id_detail no existe en la sesión, hacer una inserción
+    if not id_detail:
+        # Inserción de nuevo detalle
+         supabase.table('Detail').insert({
+            'id_customer': id_customer,
+            'id_service': service_id,
+            'id_staff': esthetician,
+            'time': time,
+            'date': selected_date
+        }).execute()
+    
+    else:
+        # Si existe id_detail, hacer una actualización
+        supabase.table('Detail').update({
+            'id_service': service_id,
+            'id_staff': esthetician,
+            'time': time,
+            'date': selected_date
+        }).eq('id_detail', id_detail).execute()
+
+    # Limpiar la sesión después de la operación (opcional)
+    session.pop('id_detail_to_update', None)
+
+    # Redirigir al usuario al catálogo o a la página que corresponda
+    return redirect(url_for('catalog.catalog'))
+
