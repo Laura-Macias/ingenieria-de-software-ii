@@ -73,30 +73,12 @@
                 </div>
             </div>
             <div class="grid">
-                <div class="employee">
-                    <img src="/static/img/empleado1.jpg" alt="Empleado 1">
-                    <p class="employee-name">Empleado 1</p>
-                </div>
-                <div class="employee">
-                    <img src="/static/img/empleado2.jpg" alt="Empleado 2">
-                    <p class="employee-name">Empleado 2</p>
-                </div>
-                <div class="employee">
-                    <img src="/static/img/empleado3.jpg" alt="Empleado 3">
-                    <p class="employee-name">Empleado 3</p>
-                </div>
-                <div class="employee">
-                    <img src="/static/img/empleado4.jpg" alt="Empleado 4">
-                    <p class="employee-name">Empleado 4</p>
-                </div>
-                <div class="employee">
-                    <img src="/static/img/empleado5.jpg" alt="Empleado 5">
-                    <p class="employee-name">Empleado 5</p>
-                </div>
-                <div class="employee">
-                    <img src="/static/img/empleado6.jpg" alt="Empleado 6">
-                    <p class="employee-name">Empleado 6</p>
-                </div>
+                {% for employees in employees %}
+                    <div class="employee">
+                        <img src="/static/img/empleado{{employees.id_staff}}.jpg" alt="Empleado {{employees.id_staff}}">
+                        <p class="employee-name">{{employees.name}} {{employees.last_name}}</p>
+                    </div>
+                {% endfor %}
             </div>
         </section>
    </main>

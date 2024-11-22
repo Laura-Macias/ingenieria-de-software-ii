@@ -5,6 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras</title>
     <link rel="stylesheet" href="../static/css/carrito_style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .tables-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; 
+            max-width: 2400px;
+            margin: 50px auto;
+            flex-wrap: wrap;
+        }
+
+        .table-wrapper {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%; 
+            min-width: 300px; 
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.8);;
+            color: white;
+        }
+
+        .action-button {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .info-button {
+            background-color: #deb05b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px; 
+            height: 40px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .info-button:hover {
+            background-color: #E8C78C;
+        }
+
+
+        .collect-button {
+            background-color: #CF6A1F;
+        }
+
+        .collect-button:hover {
+            background-color: #E28742;
+        }
+
+    </style>
+
 </head>
 
 <header>
@@ -13,7 +104,7 @@
             <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
         </div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home" class="highlight">Home</a></li>
+            <li><a href="{{ url_for('home_index.home_index') }}" class="highlight">Home</a></li>
             <li><a href="{{ url_for('catalog.catalog') }}">Catálogo</a></li>
         </ul>
         <div class="profile-section">
@@ -36,33 +127,11 @@
                 <h1>Mi Detalle</h1>
             </div>
 
-            <!-- Tabla con la información de la base de datos -->
-            <div class="table-container">
-                <h2>Detalles de la cita</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID Detalle</th>
-                            <th>ID Servicio</th>
-                            <th>ID Staff Time</th>
-                            <th>Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in pedido_detalles %}
-                            <tr>
-                                <td>{{ item.id_detail }}</td>
-                                <td>{{ item.id_service }}</td>
-                                <td>{{ item.id_staff_time }}</td>
-                                <td>{{ item.date }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+            
 
             <!-- Mensaje si el carrito está vacío -->
-            <div class="carrito-vacio" {% if pedido_detalles|length == 0 %}style="display:block;"{% else %}style="display:none;"{% endif %}>
+            {% if not servicios %}
+            <div class="carrito-vacio">
                 <p>Carrito vacío</p>
                 <button onclick="redirigirACita()">Agenda tu cita</button>
 
@@ -73,12 +142,60 @@
                     }
                 </script>
             </div>
+            {% endif %}
+            {% if servicios %}
+            <!-- Tabla con la información de la base de datos -->
+            <div class="tables-container">
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Servicio</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for servicios in servicios %}
+                                {% for items in items %}
+                                    {% if servicios.id_customer == current_user.id_customer and servicios.id_service == items.id_catalog %}
+                                        <tr>
+                                            <td>{{ servicios.id_service }}</td> 
+                                            <td>{{ items.service_name }}</td>
+                                            <td>{{ servicios.date }}</td>
+                                            <td>{{ servicios.time }}</td>
+                                            <td>
+                                                <form action="{{ url_for('detalle.eliminar_detalle') }}" method="POST">
+                                                    <input type="hidden" name="id_detail" value="{{ servicios.id_detail }}">
+                                                    <button type="submit" class="action-button collect-button">Eliminar</button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form action="" method="post">
+                                                    <input type="hidden" name="id_detail" value="">
+                                                    <button type="submit" class="action-button collect-button">Modificar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
 
-            <div class="carrito-con-elementos" {% if pedido_detalles|length > 0 %}style="display:block;"{% else %}style="display:none;"{% endif %}>
+
+            <div class="carrito-con-elementos">
                 <button id="addMoreServicesButton" onclick="redirigirACatalogo()">Añadir más servicios</button>
                 <button id="payButton" onclick="redirigirAPago()">Pagar</button>
             </div>
-
+            {% endif %}
         </main>
 
         <footer>
