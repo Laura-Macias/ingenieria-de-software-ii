@@ -142,6 +142,8 @@
                     }
                 </script>
             </div>
+
+
             {% endif %}
             {% if servicios %}
             <!-- Tabla con la información de la base de datos -->
@@ -169,14 +171,16 @@
                                             <td>{{ servicios.date }}</td>
                                             <td>{{ servicios.time }}</td>
                                             <td>
+
                                                 <form action="{{ url_for('detalle.eliminar_detalle') }}" method="POST">
                                                     <input type="hidden" name="id_detail" value="{{ servicios.id_detail }}">
                                                     <button type="submit" class="action-button collect-button">Eliminar</button>
                                                 </form>
+
                                             </td>
                                             <td>
-                                                <form action="" method="post">
-                                                    <input type="hidden" name="id_detail" value="">
+                                                <form action="{{ url_for('detalle.redirigir_a_catalogo') }}" method="POST">
+                                                    <input type="hidden" name="id_detail" value="{{ servicios.id_detail }}">
                                                     <button type="submit" class="action-button collect-button">Modificar</button>
                                                 </form>
                                             </td>
