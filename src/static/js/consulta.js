@@ -1,0 +1,1 @@
+const carritoVacio = document.querySelector('.consulta');

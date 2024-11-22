@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="../static/css/carrito_style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .tables-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 2400px;
+            margin: 50px auto;
+            flex-wrap: wrap;
+        }
+
+        .table-wrapper {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            min-width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.8);
+            ;
+            color: white;
+        }
+
+        .action-button {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .info-button {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .info-button:hover {
+            background-color: #E8C78C;
+        }
+
+
+        .collect-button {
+            background-color: #ff9800;
+        }
+
+        .collect-button:hover {
+            background-color: #ff9800;
+        }
+
+        .profile-menu {
+            display: none;
+            /* Asegúrate de que inicialmente esté oculto */
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            width: 250px;
+            border-radius: 8px;
+        }
+        .boton-aceptar {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #e68900;
+}
+    </style>
+
+</head>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="../static/img/logo tsume kirei.png" alt="Logo Tsume Kirei">
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{{ url_for('home_index.home_index') }}" class="highlight">Home</a></li>
+            <li><a href="{{ url_for('catalog.catalog') }}">Catálogo</a></li>
+        </ul>
+
+
+        <div class="menu-toggle" id="menuToggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="profile-section">
+            <img src="../static/img/client_image.jpg" alt="Imagen Cliente" class="client-image"
+                onclick="toggleProfileMenu()">
+            <span class="client-name">{{ current_user.name }} {{ current_user.last_name }}</span>
+            <div class="profile-menu" id="profileMenu">
+                <div class="profile-info">
+                    <p><strong>Nombre:</strong> {{ current_user.name }}</p>
+                    <p><strong>Apellido:</strong> {{ current_user.last_name }}</p>
+                    <p><strong>Email:</strong> {{ current_user.email }}</p>
+                </div>
+                <div class="profile-menu-actions">
+                    <a href="{{ url_for('user.user') }}"><button>Información</button></a>
+                    <a class="btn-logout" href="{{ url_for('auth.logout') }}"><button>Salir</button></a>
+                </div>
+            </div>
+        </div>
+        <script>
+            function toggleProfileMenu() {
+                var profileMenu = document.getElementById("profileMenu");
+                profileMenu.style.display = (profileMenu.style.display === "block") ? "none" : "block";
+            }
+
+            document.addEventListener('click', function (event) {
+                var profileMenu = document.getElementById('profileMenu');
+                var profileImage = document.querySelector('.client-image');
+
+                if (!profileMenu.contains(event.target) && event.target !== profileImage) {
+                    profileMenu.style.display = 'none';
+                }
+            });
+        </script>
+
+    </nav>
+</header>
+
+<body>
+    <div class="carrito">
+        <main>
+            <div class="encabezado">
+                <img src="../static/img/logo tsume kirei.png" alt="logo">
+                <h1>Mis citas agendadas</h1>
+            </div>
+
+            <!-- Mensaje si el carrito está vacío -->
+            {% if not turnos %}
+            <div class="carrito-vacio">
+                <p>No tiene citas</p>
+                <button onclick="redirigirACita()">Agenda tu cita</button>
+
+                <script>
+                    function redirigirACita() {
+                        alert('Redirigiendo a la agenda de citas...');
+                        window.location.href = "{{ url_for('catalog.catalog') }}";
+                    }
+                </script>
+            </div>
+            {% endif %}
+            {% if turnos %}
+            <!-- Tabla con la información de la base de datos -->
+            <div class="tables-container">
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Servicio</th>
+                                <th>Manicurista</th>
+                                <th>Descripción</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for turno in turnos %}
+                                {% if turno['id_customer_calendar'] == current_user.id_customer %}
+                            <tr>
+                                <!-- Asegúrate de que las claves del diccionario coincidan con las que se están pasando -->
+                                <td>{{ turno['event_date'] }}</td>
+                                <td>{{ turno['service_name'] }}</td>
+                                <td>{{ turno['manicurist_name'] }}</td>
+                                <td>{{ turno['description'] }}</td>
+                            </tr>
+                            {% else %}
+                            <!-- Opcional: Si quieres ver que no haya datos para este cliente -->
+                            <tr>
+                                <td colspan="4">No hay turnos para este cliente</td></tr>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+
+            <div class="boton-aceptar">
+                <a href="{{ url_for('catalog.catalog') }}">
+                    <button class="action-button">Aceptar</button>
+                </a>
+            </div>
+            {% endif %}
+
+          
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Tsume Kirei. Todos los derechos reservados.</p>
+        </footer>
+
+        
+    </div>
+
+</body>
+
+</html>
