@@ -19,55 +19,11 @@ def eliminar_detalle():
     
     return redirect(url_for('detalle.detalle_vacio'))
 
-
-
-@detalle_bp.route('/redirigir_a_catalogo', methods=['POST'])
-def redirigir_a_catalogo():
-    return redirect(url_for('catalog.catalog'))
-
-
-@detalle_bp.route('/redirigir_a_reservation', methods=['POST'])
-def redirigir_a_reservation():
-
-    id_detail = request.form.get('id_detail')
-    session['id_detail_to_update'] = id_detail
-    return redirect(url_for('reservation.select_service'))
-
-
-
-@detalle_bp.route('/actualizar', methods=['POST'])
-def actualizar_detalle():
-    try:
-        id_detail = session.get('id_detail_to_update')
-        service_id = request.form.get('service_id')  
-        esthetician = request.form.get('esthetician')
-        time = request.form.get('time')
-        id_customer = request.form.get('id_customer')
-        selected_date = request.form.get('selected_date')
-
-        print("Datos recibidos:", service_id, esthetician, time, id_customer, selected_date)
-        
-        supabase.table('Detail').update({
-                'id_detail': id_detail,
-                'id_customer': id_customer,
-                'id_service': service_id,
-                'id_staff': esthetician,
-                'time': time,
-                'date': selected_date
-            }).execute()
-        
-        return redirect(url_for('catalog.catalog'))
-    except Exception as e:
-        print(f"Error al actualizar el detalle: {e}")
-
-    return redirect(url_for('detalle.reservation'))
-  
-
-def detalle():
+def obtener_detalle():
         
     try:
         response = supabase.table('Detail').select('*').eq('id_customer', current_user.id_customer).execute()
-        print(response)
+
         if not response.data:
             print("No se encontraron detalles en la base de datos.")
             
@@ -76,6 +32,41 @@ def detalle():
     except Exception as e:
         print(f"Error al obtener el detalle: {e}")
         return []
+
+@detalle_bp.route('/actualizar', methods=['GET', 'POST'])
+def actualizar_detalle():
+    id_detail = request.args.get('id_detail') 
+    detalles = obtener_detalle()
+    print ("Id detalle:", id_detail)
+    if request.method == 'POST':
+        try:
+            id_detail = session.get('id_detail_to_update')
+            service_id = request.form.get('service_id')  
+            esthetician = request.form.get('esthetician')
+            time = request.form.get('time')
+            id_customer = request.form.get('id_customer')
+            selected_date = request.form.get('selected_date')
+
+            print("Datos recibidos:", service_id, esthetician, time, id_customer, selected_date)
+            
+            supabase.table('Detail').update({
+                    'id_detail': id_detail,
+                    'id_customer': id_customer,
+                    'id_service': service_id,
+                    'id_staff': esthetician,
+                    'time': time,
+                    'date': selected_date
+                }).execute()
+            
+            return redirect(url_for('catalog.catalog'))
+        except Exception as e:
+            print(f"Error al actualizar el detalle: {e}")
+
+    for detalle in detalles:
+        if detalle.id_detail == id_detail:
+            service_id = id_detail
+    return redirect(url_for('calendar.calendar', service_id = id_detail))
+  
     
 def catalogo():
         
@@ -95,7 +86,7 @@ def catalogo():
 
 @detalle_bp.route('/')
 def detalle_vacio():
-    servicios = detalle()  # Llama a la función que obtiene el detalles
+    servicios = obtener_detalle()  # Llama a la función que obtiene el detalles
     items = catalogo()
     print (servicios)
     if servicios:  # Verifica si hay productos antes de renderizar

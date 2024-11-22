@@ -32,7 +32,11 @@
                     <label for="time">Hora:</label>
                     <input type="time" id="time" name="time" required>
                 </div>
-                
+                {% for detalle in detalles%}
+                    {% if detalle.id_detail == service_id %}
+                    <button type="submit" class="btn">Confirmar cambio</button>
+                    {% endif %}
+                {% endfor %}   
                 <button type="submit" class="btn">Confirmar</button>
                 <button action="{{ url_for('pay.pay') }}" type="button" id="payButton" class="btn">Pagar</button>
             </form>
